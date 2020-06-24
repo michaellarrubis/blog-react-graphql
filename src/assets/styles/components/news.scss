@@ -1,0 +1,38 @@
+.news {
+	padding: 98px 0 150px;
+}
+
+.news-wrapper {}
+
+.news-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.news-title {
+	font-size: 50px;
+	letter-spacing: .09em;
+}
+
+.news-create-link {
+	font-size: 20px;
+	font-weight: 600;
+	letter-spacing: .1em;
+	color: $color-primary-black;
+}
+
+.news-body {
+	margin-top: 65px;
+}
+
+.news-footer {
+	display: flex;
+	margin-top: 20px;
+	justify-content: center;
+}
+
+.news-footer-link {
+	letter-spacing: .15em;
+	padding: 24px 96px;
+}
