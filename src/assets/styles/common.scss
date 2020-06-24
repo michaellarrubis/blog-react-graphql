@@ -8,20 +8,11 @@ body {
 	font-family: $montserrat;
 }
 
-.l-wrapper {
-	width: 100%;
-	max-width: 1120px;
-	margin: 0 auto;
+ul {
+	display: block;
+	list-style-type: none;
 }
 
-.btn {
-	border: 0;
-	color: $color-white;
-    background-color: $color-primary-black;
-    padding: 21px 57px;
-    outline: 0;
-	font-weight: 700;
-	font-size: 20px;
-	letter-spacing: .1em;
-	font-family: $gothic;
+li {
+	text-decoration: none;
 }

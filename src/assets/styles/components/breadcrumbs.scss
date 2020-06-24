@@ -1,0 +1,30 @@
+.breadcrumbs {
+	padding: 30px;
+	background-color: $color-light-grey;
+}
+
+.breadcrumbs-list {
+	display: flex;
+	align-items: center;
+}
+
+.breadcrumbs-item {
+	margin-right: 38px;
+	position: relative;
+
+	&:first-child {
+		&::after {
+			content: ">";
+			position: absolute;
+			font-size: 20px;
+		    right: -30px;
+		    top: -7%;
+			transform: translateX(-50%);
+		}
+	}
+}
+
+.breadcrumbs-link {
+	color: $color-primary-black;
+	text-decoration: none;
+}

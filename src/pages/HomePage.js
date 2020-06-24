@@ -5,7 +5,7 @@ import News from '../components/News'
 
 const HomePage = () => {
   return (
-    <main className="l-main">
+    <main className="main">
     	<Slider />
     	<News />
     </main>

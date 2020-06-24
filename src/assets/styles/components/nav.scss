@@ -1,0 +1,15 @@
+.nav {}
+
+.nav-list {}
+
+.nav-item {}
+
+.nav-link {
+	text-decoration: none;
+	color: $color-primary-black;
+	font-weight: 700;
+	font-size: 19px;
+	letter-spacing: .07em;
+    padding: 21px 0;
+    display: block;
+}

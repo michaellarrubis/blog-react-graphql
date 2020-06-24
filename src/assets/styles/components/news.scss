@@ -1,9 +1,3 @@
-.news {
-	padding: 98px 0 150px;
-}
-
-.news-wrapper {}
-
 .news-header {
 	display: flex;
 	justify-content: space-between;
@@ -24,6 +18,50 @@
 
 .news-body {
 	margin-top: 65px;
+}
+
+.news-list {
+	display: flex;
+	flex-wrap: wrap;
+    align-items: center;
+    margin: 0 -25px 0px -25px;
+}
+
+.news-item {
+    margin: 0 25px 50px;
+    padding: 40px 30px;
+	width: calc((100%/3) - 50px);
+    border: 1px solid $color-primary-black;
+}
+
+.news-link {
+	color: $color-primary-black;
+    text-decoration: none;
+}
+
+.news-image {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	height: 200px;
+	width: 100%;
+	position: relative;
+}
+
+.news-posted {
+	font-size: 16px;
+	font-weight: 700;
+	margin-top: 25px;
+	display: block;
+	letter-spacing: .1em;
+}
+
+.news-text {
+	margin-top: 10px;
+	line-height: 1.6;
+	font-size: 20px;
+	font-weight: 600;
+	font-family: $gothic;
 }
 
 .news-footer {

@@ -1,9 +1,12 @@
 @import "variables.scss";
 @import "common.scss";
+@import "layouts.scss";
 
-@import "./layouts/l-header.scss";
-@import "./layouts/l-footer.scss";
-
+@import "./components/nav.scss";
+@import "./components/header.scss";
+@import "./components/footer.scss";
 @import "./components/slider.scss";
+@import "./components/breadcrumbs.scss";
 @import "./components/news.scss";
 @import "./components/news-article.scss";
+@import "./components/comment.scss";

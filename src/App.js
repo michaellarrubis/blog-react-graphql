@@ -7,15 +7,15 @@ import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 
 function App() {
-  return (
-    <div className="app">
-      <BrowserRouter>
-    		<Header />
-	      <Pages />
-	    	<Footer />
-      </BrowserRouter>
-    </div>
-  );
+  	return (
+	    <div className="app">
+	      	<BrowserRouter>
+	    		<Header />
+		      	<Pages />
+		    	<Footer />
+	      	</BrowserRouter>
+	    </div>
+  	);
 }
 
 export default App;

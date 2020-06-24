@@ -1,17 +1,17 @@
-.l-footer {
+.footer {
 	color: $color-white;
 	background-color: $color-secondary-black;
 }
 
-.l-footer-inner {
+.footer-inner {
 	padding: 78px 0 70px;
 }
 
-.l-footer-inner-content {
+.footer-inner-content {
 	position: relative;
 }
 
-.l-footer-back-to-top {
+.footer-back-to-top {
 	position: absolute;
 	background-color: $color-white;
 	height: 70px;
@@ -19,7 +19,7 @@
 	right: 0;
 }
 
-.l-footer-back-to-top-arrow {
+.footer-back-to-top-arrow {
 	height: 12px;
 	width: 12px;
 	border-width: 0 0 3px 3px;
@@ -32,7 +32,7 @@
 	top: 22px;
 }
 
-.l-footer-back-to-top-text {
+.footer-back-to-top-text {
 	color: $color-primary-black;
 	font-size: 16px;
 	font-weight: 700;
@@ -43,20 +43,20 @@
 	transform: translateX(-50%);
 }
 
-.l-footer-description {
+.footer-description {
 	margin-top: 38px;
 	font-family: $gothic;
 }
 
-.l-footer-text {
+.footer-text {
 	margin-top: 9px;
 }
 
-.l-footer-copyright {
+.footer-copyright {
 	background-color: $color-primary-black;
 }
 
-.l-footer-copyright-text {
+.footer-copyright-text {
 	font-size: 16px;
 	font-weight: 300;
 	text-align: center;

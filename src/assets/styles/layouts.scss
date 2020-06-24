@@ -1,0 +1,20 @@
+.l-container {
+	width: 100%;
+	max-width: 1120px;
+	margin: 0 auto;
+}
+
+.l-section {
+	width: 100%;
+	position: relative;
+}
+
+.l-section-news {
+	padding: 98px 0 150px;
+}
+
+.l-section-comment {
+	border-top: 1px solid $color-primary-black;
+	padding-top: 60px;
+	margin-top: 94px;
+}

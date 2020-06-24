@@ -1,0 +1,67 @@
+.content-comment {}
+
+.comment-header {
+	display: block;
+	font-size: 50px;
+	letter-spacing: .09em;
+}
+
+.comment-list {
+	margin-top: 38px;
+}
+
+.comment-item {
+	background-color: $color-light-grey;
+	padding: 50px 40px 45px;
+    letter-spacing: .09em;
+    font-size: 18px;
+    line-height: 2.2;
+    margin-bottom: 50px;
+}
+
+.comment-text {
+    font-family: $gothic;
+}
+
+.comment-posted {
+	font-weight: 600;
+	font-size: 16px;
+	margin-top: 18px;
+}
+
+.comment-form {
+	margin-bottom: 147px;
+}
+
+.comment-textarea {
+	width: 100%;
+	resize: none;
+	outline: 0;
+	height: 200px;
+	padding: 28px;
+	border-radius: 0;
+	font-family: $montserrat;
+	font-size: 19px;
+
+	&::placeholder {
+		font-style: italic;
+	}
+}
+
+.comment-form-footer {
+	display: flex;
+	margin-top: 36px;
+	justify-content: flex-end;
+}
+
+.comment-button {
+	border: 0;
+	color: $color-white;
+    background-color: $color-primary-black;
+    padding: 23px 57px;
+    outline: 0;
+	font-weight: 600;
+	font-size: 20px;
+	letter-spacing: .11em;
+	font-family: $montserrat;
+}
