@@ -11,7 +11,7 @@ const NewsArticle = () => {
             <Link path="/" className="news-article-item" key={article}>
                 <div className="news-article-image" style={{backgroundImage: `url(${DummySlider})`}}/>
                 <time datetime="2019.06.19" className="news-article-posted">2019.06.19</time>
-                <p className="news-article-excerpt">サンプルテキストサンプル ルテキストサンプルテキストサンプルテキストサンプル ルテキ</p>
+                <p className="news-article-text">サンプルテキストサンプル ルテキストサンプルテキストサンプルテキストサンプル ルテキ</p>
             </Link>
         )
     });
