@@ -1,8 +1,10 @@
 export const routes = {
-  home          : '/',
-  login         : '/login',
-  register      : '/register',
-  newsArticle   : '/news/:id',
+  home                : '/',
+  login               : '/login',
+  register            : '/register',
+  article             : '/articles/:id',
+  articleCreate       : '/article/create',
+  articleEdit         : '/article/:id/edit'
 }
 
 export const route = (r, data) => {

@@ -70,7 +70,14 @@
 	justify-content: center;
 }
 
-.news-footer-link {
+.news-footer-button {
 	letter-spacing: .15em;
 	padding: 24px 96px;
+	border: 0;
+	color: $color-white;
+    background-color: $color-primary-black;
+    outline: 0;
+	font-weight: 600;
+	font-size: 20px;
+	font-family: $montserrat;
 }

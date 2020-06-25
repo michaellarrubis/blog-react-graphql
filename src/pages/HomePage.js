@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Slider from '../components/Slider'
-import News from '../components/News'
+import Slider from '../components/home/Slider'
+import News from '../components/home/News'
 
 const HomePage = () => {
   return (

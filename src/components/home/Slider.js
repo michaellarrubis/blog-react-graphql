@@ -1,5 +1,5 @@
 import React from 'react';
-import DummySlider from '../assets/images/slider.png';
+import DummySlider from '../../assets/images/slider.png';
 
 const Slider = () => {
   return (
@@ -14,7 +14,7 @@ const Slider = () => {
                                     <p className="slider-item-title">
                                         サンプルテキストサンプル ルテキストサンプルテキスト
                                     </p>
-                                    <time datetime="2019.06.19" className="slider-item-posted">2019.06.19</time>
+                                    <time dateTime="2019.06.19" className="slider-item-posted">2019.06.19</time>
                                 </div>
                                 <div className="slider-navigation">
                                     <div className="slider-navigation-item navigate-left"/>

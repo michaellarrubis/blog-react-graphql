@@ -1,30 +1,32 @@
 import React from 'react';
+import { Link, useParams } from 'react-router-dom';
 
-import Breadcrumbs from '../components/common/Breadcrumbs'
 import Comment from '../components/Comment'
+import Breadcrumbs from '../components/common/Breadcrumbs'
 
 import DummyImage from '../assets/images/slider.png';
 
-const NewsArticle = () => {
+const ArticlePage = () => {
+    const articleId = useParams().id;
 
     return (
-        <div className="news-article">
-        	<Breadcrumbs />
+        <div className="article">
+        	<Breadcrumbs currentPage=" サンプルテキストサンプル ルテキストサンプルテキストサンプルテキストサンプル ルテキスト "/>
 
             <div className="l-container">
-            	<div className="news-article-header">
-            		<ul className="news-article-action-list">
-            			<li className="news-article-action-item">
-	                		<button className="news-article-action-btn"> Edit Post </button>
+            	<div className="article-header">
+            		<ul className="article-action-list">
+            			<li className="article-action-item">
+                            <Link to={'/article/' + articleId + '/edit'} className="article-action-link"> Edit Post </Link>
             			</li>
             		</ul>
             	</div>
-            	<div className="news-article-body">
-                    <time datetime="2019.06.19" className="news-article-posted">2019.06.19</time>
-                    <h1 className="news-article-title">サンプルテキストサンプル ルテキストサンプルテキ
+            	<div className="article-body">
+                    <time dateTime="2019.06.19" className="article-posted">2019.06.19</time>
+                    <h1 className="article-title">サンプルテキストサンプル ルテキストサンプルテキ
 ストサンプルテキストサンプル ルテキスト </h1>
-					<div className="news-article-image" style={{backgroundImage: `url(${DummyImage})`}}/>
-					<div className="news-article-text">
+					<div className="article-image" style={{backgroundImage: `url(${DummyImage})`}}/>
+					<div className="article-text">
 						ここにはテキストが入ります。ここにはテキストが入りますここにはテキストが入りますここにはテキストが入りますここにはテキストが入ります。ここにはテキストが入ります。ここにはテキストが入りますここにはテキストが入りますここにはテキストが入りますここにはテキストが入ります。ここにはテキストが入ります。ここにはテキストが入りますここにはテキストが入りますここにはテキストが入りますここにはテキストが入ります。
 						<br/>
 						ここにはテキストが入ります。ここにはテキストが入りますここにはテキストが入りますここにはテキストが入りますここにはテキストが入ります。ここにはテキストが入ります。ここにはテキストが入りますここにはテキストが入りますここにはテキストが入りますここにはテキストが入ります。ここにはテキストが入ります。ここにはテキストが入りますここにはテキストが入りますここにはテキストが入りますここにはテキストが入ります。
@@ -36,4 +38,4 @@ const NewsArticle = () => {
     );
 }
 
-export default NewsArticle
+export default ArticlePage

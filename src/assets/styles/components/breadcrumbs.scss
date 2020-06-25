@@ -9,17 +9,18 @@
 }
 
 .breadcrumbs-item {
-	margin-right: 38px;
 	position: relative;
 
-	&:first-child {
-		&::after {
+	&:not(:first-child) {
+		margin-left: 38px;
+
+		&::before {
 			content: ">";
 			position: absolute;
 			font-size: 20px;
-		    right: -30px;
-		    top: -7%;
-			transform: translateX(-50%);
+		    left: -25px;
+		    top: 50%;
+			transform: translateY(-50%);
 		}
 	}
 }

@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import DummyImage from '../assets/images/slider.png';
+import DummyImage from '../../assets/images/slider.png';
 
 const News = () => {
     let NewsArticles = [1, 2, 3, 4, 5, 6];
     let NewsArticleItems = NewsArticles.map((article) => {
         return (
-            <li className="news-item">
-                <Link path="/" className="news-link" key={article}>
+            <li className="news-item" key={article}>
+                <Link to={'/articles/' + article} className="news-link">
                     <div className="news-image" style={{backgroundImage: `url(${DummyImage})`}}/>
-                    <time datetime="2019.06.19" className="news-posted">2019.06.19</time>
+                    <time dateTime="2019.06.19" className="news-posted">2019.06.19</time>
                     <p className="news-text">サンプルテキストサンプル ルテキストサンプルテキストサンプルテキストサンプル ルテキ</p>
                 </Link>
             </li>
@@ -24,7 +24,7 @@ const News = () => {
                     <div className="content content-news">
                         <div className="news-header">
                             <h1 className="news-title">NEWS</h1>
-                            <Link to="/" className="news-create-link">
+                            <Link to="/article/create" className="news-create-link">
                                 Create New Post
                             </Link>
                         </div>
@@ -34,7 +34,7 @@ const News = () => {
                             </ul>
                         </div>
                         <div className="news-footer">
-                            <button className="news-footer-link btn btn-default">LOAD MORE</button>
+                            <button className="news-footer-button">LOAD MORE</button>
                         </div>
                     </div>
                 </div>
