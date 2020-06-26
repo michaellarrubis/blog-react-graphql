@@ -4,7 +4,7 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import Breadcrumbs from '../components/common/Breadcrumbs'
 import Comment from '../components/Comment'
 
-const ArticleFormPage = () => {
+const ArticleForm = () => {
     const location = useLocation();
     const articleId = useParams().id;
 
@@ -59,4 +59,4 @@ const ArticleFormPage = () => {
     );
 }
 
-export default ArticleFormPage
+export default ArticleForm

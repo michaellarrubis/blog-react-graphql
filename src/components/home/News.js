@@ -21,21 +21,19 @@ const News = () => {
         <section className="l-section l-section-news">
             <div className="l-container">
                 <div className="l-section-inner">
-                    <div className="content content-news">
-                        <div className="news-header">
-                            <h1 className="news-title">NEWS</h1>
-                            <Link to="/article/create" className="news-create-link">
-                                Create New Post
-                            </Link>
-                        </div>
-                        <div className="news-body">
-                            <ul className="news-list">
-                                {NewsArticleItems}
-                            </ul>
-                        </div>
-                        <div className="news-footer">
-                            <button className="news-footer-button">LOAD MORE</button>
-                        </div>
+                    <div className="news-header">
+                        <h1 className="news-title">NEWS</h1>
+                        <Link to="/article/create" className="news-create-link">
+                            Create New Post
+                        </Link>
+                    </div>
+                    <div className="news-body">
+                        <ul className="news-list">
+                            {NewsArticleItems}
+                        </ul>
+                    </div>
+                    <div className="news-footer">
+                        <button className="news-footer-button">LOAD MORE</button>
                     </div>
                 </div>
             </div>

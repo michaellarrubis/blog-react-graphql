@@ -3,16 +3,20 @@ import { Switch, Route } from 'react-router-dom';
 
 import { routes } from '../utils/routes';
 
-import HomePage from './HomePage';
-import ArticlePage from './ArticlePage';
-import ArticleFormPage from './ArticleFormPage';
+import Home from './Home';
+import Login from './Login';
+import Register from './Register';
+import Article from './Article';
+import ArticleForm from './ArticleForm';
 
 const Pages = () => (
     <Switch>
-        <Route exact path={routes.home} component={HomePage}/>
-        <Route exact path={routes.article} component={ArticlePage}/>
-        <Route exact path={routes.articleCreate} component={ArticleFormPage}/>
-        <Route exact path={routes.articleEdit} component={ArticleFormPage}/>
+        <Route exact path={routes.home} component={Home}/>
+        <Route exact path={routes.login} component={Login}/>
+        <Route exact path={routes.register} component={Register}/>
+        <Route exact path={routes.article} component={Article}/>
+        <Route exact path={routes.articleCreate} component={ArticleForm}/>
+        <Route exact path={routes.articleEdit} component={ArticleForm}/>
     </Switch>
 );
 

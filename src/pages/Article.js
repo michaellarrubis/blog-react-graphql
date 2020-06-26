@@ -6,7 +6,7 @@ import Breadcrumbs from '../components/common/Breadcrumbs'
 
 import DummyImage from '../assets/images/slider.png';
 
-const ArticlePage = () => {
+const Article = () => {
     const articleId = useParams().id;
 
     return (
@@ -38,4 +38,4 @@ const ArticlePage = () => {
     );
 }
 
-export default ArticlePage
+export default Article

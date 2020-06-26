@@ -1,0 +1,79 @@
+.login-register {
+	width: 460px;
+	margin: 0 auto;
+}
+
+.login-register-header {}
+
+.login-register-header-title {
+	font-size: 30px;
+    letter-spacing: .09em;
+}
+
+.login-register-body {
+	margin-top: 50px;
+}
+
+.login-register-form {}
+
+.login-register-field {
+	display: flex;
+	flex-direction: column;
+	margin-top: 20px;
+}
+
+.login-register-label {
+	font-size: 18px;
+    letter-spacing: .09em;
+    margin-bottom: 6px;
+}
+
+.login-register-button {
+	border: 1px solid $color-primary-black;
+	background-color: $color-primary-black;
+	color: $color-white;
+	font-size: 20px;
+	font-family: $montserrat;
+	letter-spacing: .1em;
+	font-weight: 600;
+	padding: 22px 0;
+}
+
+.login-register-input {
+	outline: 1px solid $color-primary-black;
+	border-radius: 0;
+	height: 58px;
+	border: 0;
+    background-color: transparent !important;
+    padding: 10px;
+    font-size: 18px;
+    letter-spacing: .09em;
+}
+
+.login-register-footer {
+	margin-top: 40px;
+}
+
+.login-register-footer-content {
+	display: flex;
+	justify-content: center;
+}
+
+.login-register-footer-text {
+	font-size: 18px;
+	letter-spacing: .1em;
+}
+
+.login-register-footer-link {
+	font-weight: 700;
+	text-decoration: none;
+	font-size: 18px;
+	letter-spacing: .1em;
+	margin-left: 6px;
+	color: $color-primary-black;
+}
+
+
+
+
+
