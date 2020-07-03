@@ -1,5 +1,6 @@
 @import "variables.scss";
-@import "common.scss";
+@import "base.scss";
+@import "util.scss";
 @import "layouts.scss";
 
 @import "./components/nav.scss";
@@ -8,7 +9,7 @@
 @import "./components/login-register.scss";
 @import "./components/slider.scss";
 @import "./components/breadcrumbs.scss";
-@import "./components/news.scss";
-@import "./components/article.scss";
-@import "./components/article-form.scss";
+@import "./components/posts.scss";
+@import "./components/post.scss";
+@import "./components/post-form.scss";
 @import "./components/comment.scss";

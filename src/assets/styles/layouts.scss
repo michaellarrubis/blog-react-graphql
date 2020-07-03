@@ -9,7 +9,7 @@
 	position: relative;
 }
 
-.l-section-news {
+.l-section-posts {
 	padding: 98px 0 150px;
 }
 
@@ -20,5 +20,11 @@
 }
 
 .l-section-login-register {
+	padding-top: 78px;
 	margin-bottom: 154px;
+	position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: $color-white;
+    z-index: 1;
 }

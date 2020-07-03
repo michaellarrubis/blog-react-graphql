@@ -4,19 +4,17 @@ import { Switch, Route } from 'react-router-dom';
 import { routes } from '../utils/routes';
 
 import Home from './Home';
-import Login from './Login';
 import Register from './Register';
-import Article from './Article';
-import ArticleForm from './ArticleForm';
+import Post from './Post';
+import PostForm from './PostForm';
 
 const Pages = () => (
     <Switch>
         <Route exact path={routes.home} component={Home}/>
-        <Route exact path={routes.login} component={Login}/>
         <Route exact path={routes.register} component={Register}/>
-        <Route exact path={routes.article} component={Article}/>
-        <Route exact path={routes.articleCreate} component={ArticleForm}/>
-        <Route exact path={routes.articleEdit} component={ArticleForm}/>
+        <Route exact path={routes.posts} component={Post}/>
+        <Route exact path={routes.postCreate} component={PostForm}/>
+        <Route exact path={routes.postEdit} component={PostForm}/>
     </Switch>
 );
 

@@ -1,15 +1,15 @@
 import React from 'react';
 
-import Slider from '../components/home/Slider'
-import News from '../components/home/News'
+import Slider from '../components/Slider';
+import Posts from '../components/Posts';
 
 const Home = () => {
-  return (
-    <main className="main">
-    	<Slider />
-    	<News />
-    </main>
-  );
+  	return (
+	    <main className="main">
+	    	<Slider />
+	    	<Posts />
+	    </main>
+  	);
 }
 
 export default Home;

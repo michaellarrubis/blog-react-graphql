@@ -13,14 +13,16 @@
 .comment-item {
 	background-color: $color-light-grey;
 	padding: 50px 40px 45px;
-    letter-spacing: .09em;
-    font-size: 18px;
-    line-height: 2.2;
     margin-bottom: 50px;
 }
 
 .comment-text {
     font-family: $gothic;
+    white-space: pre-line;
+    letter-spacing: .09em;
+    font-size: 18px;
+    line-height: 2.2;
+    word-break: break-word;
 }
 
 .comment-posted {
@@ -33,15 +35,16 @@
 	margin-bottom: 147px;
 }
 
-.comment-textarea {
-	width: 100%;
-	resize: none;
-	outline: 0;
+.comment-form-textarea-wrapper {
 	height: 200px;
 	padding: 28px;
-	border-radius: 0;
+	border: 1px solid $color-primary-black;
+}
+
+.comment-form-textarea {
 	font-family: $montserrat;
-	font-size: 19px;
+    font-size: 18px;
+    line-height: 2.2;
 
 	&::placeholder {
 		font-style: italic;
@@ -55,13 +58,12 @@
 }
 
 .comment-button {
-	border: 0;
 	color: $color-white;
     background-color: $color-primary-black;
     padding: 23px 57px;
-    outline: 0;
-	font-weight: 600;
-	font-size: 20px;
-	letter-spacing: .11em;
-	font-family: $montserrat;
+}
+
+.login-to-comment {
+	width: 100%;
+	margin-bottom: 148px;
 }

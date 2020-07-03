@@ -3,7 +3,9 @@
 	margin: 0 auto;
 }
 
-.login-register-header {}
+.login-register-header {
+	margin-bottom: 25px;
+}
 
 .login-register-header-title {
 	font-size: 30px;
@@ -29,25 +31,15 @@
 }
 
 .login-register-button {
-	border: 1px solid $color-primary-black;
 	background-color: $color-primary-black;
 	color: $color-white;
-	font-size: 20px;
-	font-family: $montserrat;
-	letter-spacing: .1em;
-	font-weight: 600;
 	padding: 22px 0;
 }
 
 .login-register-input {
-	outline: 1px solid $color-primary-black;
-	border-radius: 0;
 	height: 58px;
-	border: 0;
     background-color: transparent !important;
-    padding: 10px;
     font-size: 18px;
-    letter-spacing: .09em;
 }
 
 .login-register-footer {
@@ -70,10 +62,16 @@
 	font-size: 18px;
 	letter-spacing: .1em;
 	margin-left: 6px;
-	color: $color-primary-black;
 }
 
+.login-register-error {
+	padding: 20px;
+	border: 1px solid $color-red;
+	background-color: $color-light-red;
+}
 
-
-
-
+.login-register-error-text {
+	color: $color-red;
+	font-weight: 500;
+	letter-spacing: .09em;
+}

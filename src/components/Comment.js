@@ -1,6 +1,78 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import TimeAgo from 'timeago-react';
 
-const Comment = () => {
+import { useUtils } from '../hooks/useUtils.js';
+import { useComment } from '../hooks/useComment.js';
+
+const Comment = ({ postId, userId, comments }) => {
+    const { _createComment, createdComment } = useComment();
+    const { _loginRegisterForm, _loginForm } = useUtils();
+
+    const [commentText, setCommentText] = useState('');
+    const [commentList, setCommentList] = useState([]);
+
+    useEffect(() => {
+        setCommentList(comments);
+    }, [comments]);
+
+    useEffect(() => {
+        if(createdComment) {
+            setCommentText('');
+            setCommentList([ ...commentList, createdComment ]);
+        }
+        
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [createdComment]);
+
+    const handleLogin = () => {
+        _loginRegisterForm(true);
+        _loginForm(true);
+    };
+
+    const handleChangeCommentText = (e) => {
+        e.persist();
+        setCommentText(e.target.value)
+    };
+
+    const handleSubmitComment = (e) => {
+        e.preventDefault();
+
+        if (commentText) {
+            _createComment(commentText, postId, userId);
+        }
+    };
+
+    const handleCommentList = () => {
+        return commentList?.map((comment, i) => {
+            return (
+                <div className="comment-item" key={i}>
+                    <p className="comment-text">{comment.text}</p>
+                    <p className="comment-posted">
+                        <TimeAgo datetime={comment.createdAt} />
+                    </p>
+                </div>
+            )
+        })
+    };
+
+
+    const handleCommentForm = userId
+        ?   <form className="comment-form" onSubmit={handleSubmitComment}>
+                <div className="comment-form-textarea-wrapper">
+                    <textarea
+                        id="text"
+                        className="comment-form-textarea" 
+                        placeholder="Write comment" 
+                        onChange={handleChangeCommentText}
+                        value={commentText} 
+                    />
+                </div>
+                <div className="comment-form-footer">
+                    <button className="comment-button">SUBMIT</button>
+                </div>
+            </form>
+        :   <button className="comment-button login-to-comment" onClick={handleLogin}>LOGIN TO COMMENT</button>
+
 	return (
 		<section className="l-section l-section-comment">
             <div className="l-container">
@@ -8,25 +80,9 @@ const Comment = () => {
                     <div className="content content-comment">
                     	<h3 className="comment-header">COMMENT</h3>
                     	<div className="comment-list">
-                    		<div className="comment-item">
-                    			<p className="comment-text">
-                    				ここにはテキストが入ります。ここにはテキストが入りますここにはテキストが入りますここにはテキストが入りますここにはテキストが入ります。ここにはテキストが入ります。ここにはテキストが入りますここにはテキストが入りますここにはテキストが入りますここにはテキストが入ります。
-                    			</p>
-                    			<p className="comment-posted">3 months ago</p>
-                    		</div>
-                    		<div className="comment-item">
-                    			<p className="comment-text">
-                    				ここにはテキストが入ります。ここにはテキストが入りますここにはテキストが入りますここにはテキストが入りますここにはテキストが入ります。ここにはテキストが入ります。ここにはテキストが入りますここにはテキストが入りますここにはテキストが入りますここにはテキストが入ります。
-                    			</p>
-                    			<p className="comment-posted">3 months ago</p>
-                    		</div>
+                            {handleCommentList()}
                     	</div>
-                    	<form className="comment-form">
-                    		<textarea placeholder="Write comment" className="comment-textarea"></textarea>
-                    		<div className="comment-form-footer">
-                    			<button className="comment-button">SUBMIT</button>
-                    		</div>
-                    	</form>
+                        {handleCommentForm}
                     </div>
                 </div>
             </div>

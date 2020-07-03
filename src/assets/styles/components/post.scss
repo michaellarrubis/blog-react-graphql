@@ -1,21 +1,21 @@
-.article {}
+.post {}
 
-.article-header {
+.post-header {
 	margin-top: 65px;
 }
 
-.article-action-list {
+.post-action-list {
 	display: flex;
 	justify-content: flex-end;
 }
 
-.article-action-item {
+.post-action-item {
 	&:not(:last-child) {
 		margin-right: 45px;
 	}
 }
 
-.article-action-link {
+.post-action-link {
 	color: $color-primary-black;
 	background-color: transparent;
 	text-decoration: underline;
@@ -25,16 +25,16 @@
 	letter-spacing: .1em;
 }
 
-.article-body {
+.post-body {
 	margin-top: 33px;
 }
 
-.article-posted {
+.post-posted {
 	font-size: 20px;
 	letter-spacing: .2em;
 }
 
-.article-title {
+.post-title {
 	margin-top: 42px;
 	font-size: 40px;
 	font-family: $gothic;
@@ -42,18 +42,20 @@
 	letter-spacing: .05em;
 }
 
-.article-image {
+.post-image {
 	margin-top: 48px;
 	width: 100%;
 	height: 540px;
+	background-color: $color-grey;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
 }
 
-.article-text {
+.post-text {
 	margin-top: 60px;
 	font-size: 18px;
 	letter-spacing: .1em;
     line-height: 2.2;
+    white-space: pre-line;
 }

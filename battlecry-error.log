@@ -1,0 +1,11 @@
+Error: 'combineReducers({' not found on file src/redux/modules/index.js
+    at File.search (/Users/michael/LIG/blog-post/front/node_modules/battlecry/src/classes/File.js:147:11)
+    at File.after (/Users/michael/LIG/blog-post/front/node_modules/battlecry/src/classes/File.js:176:29)
+    at DuckGenerator.addDuckToConfig (/Users/michael/LIG/blog-post/front/battlecry/generators/duck/duck.generator.js:170:8)
+    at DuckGenerator.generate (/Users/michael/LIG/blog-post/front/battlecry/generators/duck/duck.generator.js:42:10)
+    at DuckGenerator._callee$ (/Users/michael/LIG/blog-post/front/node_modules/battlecry/src/classes/Generator.js:64:24)
+    at tryCatch (/Users/michael/LIG/blog-post/front/node_modules/babel-polyfill/node_modules/regenerator-runtime/runtime.js:65:40)
+    at Generator.invoke [as _invoke] (/Users/michael/LIG/blog-post/front/node_modules/babel-polyfill/node_modules/regenerator-runtime/runtime.js:303:22)
+    at Generator.prototype.(anonymous function) [as next] (/Users/michael/LIG/blog-post/front/node_modules/babel-polyfill/node_modules/regenerator-runtime/runtime.js:117:21)
+    at step (/Users/michael/LIG/blog-post/front/node_modules/battlecry/src/classes/Generator.js:56:191)
+    at /Users/michael/LIG/blog-post/front/node_modules/battlecry/src/classes/Generator.js:56:437

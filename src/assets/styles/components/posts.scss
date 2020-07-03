@@ -1,54 +1,66 @@
-.news-header {
+.posts-header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
-.news-title {
+.posts-title {
 	font-size: 50px;
 	letter-spacing: .09em;
 }
 
-.news-create-link {
+.posts-create-link {
 	font-size: 20px;
 	font-weight: 600;
 	letter-spacing: .1em;
-	color: $color-primary-black;
+	text-decoration: underline;
 }
 
-.news-body {
+.posts-body {
 	margin-top: 65px;
 }
 
-.news-list {
+.posts-list {
 	display: flex;
 	flex-wrap: wrap;
     align-items: center;
     margin: 0 -25px 0px -25px;
 }
 
-.news-item {
+.posts-item {
     margin: 0 25px 50px;
-    padding: 40px 30px;
 	width: calc((100%/3) - 50px);
     border: 1px solid $color-primary-black;
+
+    &:hover {
+    	.posts-image {
+			transform: scale(1.1);
+		}
+    }
 }
 
-.news-link {
-	color: $color-primary-black;
-    text-decoration: none;
+.posts-link {
+    margin: 40px 30px;
 }
 
-.news-image {
+.posts-image-wrapper {
+	height: 200px;
+	width: 100%;
+	overflow: hidden;
+}
+
+.posts-image {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
-	height: 200px;
+	height: 100%;
 	width: 100%;
+	background-color: $color-grey;
 	position: relative;
+	transition: all .2s ease-in-out;
 }
 
-.news-posted {
+.posts-created {
 	font-size: 16px;
 	font-weight: 700;
 	margin-top: 25px;
@@ -56,28 +68,25 @@
 	letter-spacing: .1em;
 }
 
-.news-text {
+.posts-text {
 	margin-top: 10px;
 	line-height: 1.6;
 	font-size: 20px;
-	font-weight: 600;
+	font-weight: 500;
 	font-family: $gothic;
+	white-space: pre-line;
+	word-break: break-word;
 }
 
-.news-footer {
+.posts-footer {
 	display: flex;
 	margin-top: 20px;
 	justify-content: center;
 }
 
-.news-footer-button {
+.posts-footer-button {
 	letter-spacing: .15em;
 	padding: 24px 96px;
-	border: 0;
 	color: $color-white;
     background-color: $color-primary-black;
-    outline: 0;
-	font-weight: 600;
-	font-size: 20px;
-	font-family: $montserrat;
 }
