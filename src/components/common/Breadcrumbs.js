@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Breadcrumbs = (props) => {
   	return (
 	    <div className="breadcrumbs">
-	    	<div className="l-container">
+	    	<div className="u-container">
 	    		<ul className="breadcrumbs-list">
 		            <li className="breadcrumbs-item">
 		                <Link to="/" className="breadcrumbs-link"> HOME </Link>

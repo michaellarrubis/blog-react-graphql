@@ -1,4 +1,8 @@
-.content-comment {}
+.comment {
+	border-top: 1px solid $color-primary-black;
+	padding-top: 60px;
+	margin-top: 94px;
+}
 
 .comment-header {
 	display: block;

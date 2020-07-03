@@ -7,7 +7,7 @@ import Breadcrumbs from '../components/common/Breadcrumbs'
 import { usePost } from '../hooks/usePost.js';
 import { useAuth } from '../hooks/useAuth.js';
 
-import { postDate, scrollToTopOnLoad } from '../utils/helpers.js';
+import { postDate, scrollTop } from '../utils/helpers.js';
 
 const Post = () => {
     const postId = useParams().id;
@@ -18,14 +18,16 @@ const Post = () => {
     const [user, setUser] = useState({ id: null, isAuth: false });
 
     useEffect(() => {
-        scrollToTopOnLoad();
+        scrollTop();
         
         _getPost(postId);
 
-        setUser({
-            ...user,
-            id: token && Object.keys(token).length > 0 ? token.user.id : null,
-        });
+        if (token && Object.keys(token).length > 0) {
+            setUser({
+                ...user,
+                id: token.user.id
+            });
+        }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token]);
@@ -34,6 +36,7 @@ const Post = () => {
         if (post && Object.keys(post).length) {
             setUser({
                 ...user,
+                id: token?.user?.id,
                 isAuth: post?.user?.id === token?.user?.id ? true : false
             });
         }
@@ -47,10 +50,10 @@ const Post = () => {
         :   '';
 
     return (
-        <main className="post">
+        <div className="post">
         	<Breadcrumbs currentPage={post.title} currentPageUrl={'/posts/' + post.id}/>
 
-            <div className="l-container">
+            <div className="u-container">
                 <div className="post-header">
                     <ul className="post-action-list">
                         <li className="post-action-item">
@@ -67,11 +70,11 @@ const Post = () => {
 
             	<Comment 
                     postId={post.id} 
-                    userId={post?.user?.id}
+                    userId={user.id}
                     comments={post.comments}
                 />
             </div>
-        </main>
+        </div>
     );
 }
 

@@ -73,71 +73,67 @@ const Register = () => {
     };
 
     return (
-        <section className="l-section l-section-login-register">
-            <div className="l-container">
-                <div className="l-section-inner">
-                    <div className="login-register">
-                        <div className="login-register-header">
-                            <h2 className="login-register-header-title">Register</h2>
+        <div className="login-register">
+            <div className="login-register-inner">
+                <div className="login-register-header">
+                    <h2 className="login-register-header-title">Register</h2>
+                </div>
+                <div className="login-register-body">
+                    <form className="login-register-form" onSubmit={handleRegister}>
+                        { handleErrorDisplay }
+                        <div className="login-register-field">
+                            <label htmlFor="name" className="login-register-label">Name</label>
+                            <input 
+                                className="login-register-input" 
+                                type="name" 
+                                id="name"
+                                value={form.name}
+                                onChange={handleChange}
+                            />
                         </div>
-                        <div className="login-register-body">
-                            <form className="login-register-form" onSubmit={handleRegister}>
-                                { handleErrorDisplay }
-                                <div className="login-register-field">
-                                    <label htmlFor="name" className="login-register-label">Name</label>
-                                    <input 
-                                        className="login-register-input" 
-                                        type="name" 
-                                        id="name"
-                                        value={form.name}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div className="login-register-field">
-                                    <label htmlFor="email" className="login-register-label">Email</label>
-                                    <input 
-                                        className="login-register-input" 
-                                        type="email" 
-                                        id="email"
-                                        value={form.email}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div className="login-register-field">
-                                    <label htmlFor="password" className="login-register-label">Password</label>
-                                    <input 
-                                        className="login-register-input" 
-                                        type="password" 
-                                        id="password" 
-                                        value={form.password}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div className="login-register-field">
-                                    <label htmlFor="confirmPassword" className="login-register-label">Confirm Password</label>
-                                    <input 
-                                        className="login-register-input" 
-                                        type="password" 
-                                        id="confirmPassword"
-                                        value={form.confirmPassword}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div className="login-register-field">
-                                    <button className="login-register-button">SUBMIT</button>
-                                </div>
-                            </form>
+                        <div className="login-register-field">
+                            <label htmlFor="email" className="login-register-label">Email</label>
+                            <input 
+                                className="login-register-input" 
+                                type="email" 
+                                id="email"
+                                value={form.email}
+                                onChange={handleChange}
+                            />
                         </div>
-                        <div className="login-register-footer">
-                            <div className="login-register-footer-content">
-                                <p className="login-register-footer-text">Already have an account?</p>
-                                <Link to="/" onClick={handleRegisterFormDisplay} className="login-register-footer-link"> LOGIN HERE </Link>
-                            </div>
+                        <div className="login-register-field">
+                            <label htmlFor="password" className="login-register-label">Password</label>
+                            <input 
+                                className="login-register-input" 
+                                type="password" 
+                                id="password" 
+                                value={form.password}
+                                onChange={handleChange}
+                            />
                         </div>
+                        <div className="login-register-field">
+                            <label htmlFor="confirmPassword" className="login-register-label">Confirm Password</label>
+                            <input 
+                                className="login-register-input" 
+                                type="password" 
+                                id="confirmPassword"
+                                value={form.confirmPassword}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="login-register-field">
+                            <button className="login-register-button">SUBMIT</button>
+                        </div>
+                    </form>
+                </div>
+                <div className="login-register-footer">
+                    <div className="login-register-footer-content">
+                        <p className="login-register-footer-text">Already have an account?</p>
+                        <Link to="/" onClick={handleRegisterFormDisplay} className="login-register-footer-link"> LOGIN HERE </Link>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     );
 }
 

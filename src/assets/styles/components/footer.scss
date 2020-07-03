@@ -17,6 +17,14 @@
 	height: 70px;
 	width: 70px;
 	right: 0;
+
+    @media(max-width: 768px) {
+    	right: 20px;
+    }
+
+    &:hover {
+    	cursor: pointer
+    }
 }
 
 .footer-back-to-top-arrow {

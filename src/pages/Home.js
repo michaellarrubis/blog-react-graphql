@@ -5,10 +5,10 @@ import Posts from '../components/Posts';
 
 const Home = () => {
   	return (
-	    <main className="main">
+	    <div className="top">
 	    	<Slider />
 	    	<Posts />
-	    </main>
+	    </div>
   	);
 }
 

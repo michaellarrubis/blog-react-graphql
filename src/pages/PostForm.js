@@ -6,7 +6,7 @@ import FileUploader from "react-firebase-file-uploader";
 import { useAuth } from '../hooks/useAuth.js';
 import { usePost } from '../hooks/usePost.js';
 
-import { postDate, scrollToTopOnLoad } from '../utils/helpers.js';
+import { postDate, scrollTop } from '../utils/helpers.js';
 import firebaseConfig from '../utils/firebase-config';
 
 import Breadcrumbs from '../components/common/Breadcrumbs';
@@ -27,8 +27,8 @@ const PostForm = () => {
 
     const [image, setImage] = useState(null);
     const [isUploading, setIsUploading] = useState(false);
-    const [formPost, setFormPost] = useState({ title: '', published: false, body: '', userId: null });
     const [isBtnClicked, setIsBtnClicked] = useState(false);
+    const [formPost, setFormPost] = useState({ title: '', published: false, body: '', userId: null });
 
     const location = useLocation();
     const postId = useParams().id;
@@ -36,10 +36,8 @@ const PostForm = () => {
     const isFormEdit = location.pathname.includes('edit');
     const formActionPage = isFormEdit ? post?.title : "Create New Post";
 
-    let handleCommentSection = isFormEdit ? <Comment /> : '';
-
     useEffect(() => {
-        scrollToTopOnLoad();
+        scrollTop();
         setIsBtnClicked(false);
 
         if (isFormEdit) {
@@ -76,7 +74,14 @@ const PostForm = () => {
             history.push(`/posts/${updatedPost.id}`);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [updatedPost]);
+    }, [updatedPost, post]);
+
+    const handleCommentSection = isFormEdit
+        ?   <Comment 
+                postId={postId} 
+                userId={token?.user?.id} 
+                comments={post.comments} />
+        :   '';
 
     const handleUploadStart = () => {
         setIsUploading(true);
@@ -94,17 +99,10 @@ const PostForm = () => {
             });
     };
 
-    const handleChangeText = e => {
+    const handleUpdateField = (e) => {
         e.persist();
         setFormPost(prevState => {
-            return { ...prevState, [e.target.id]: e.target.value }
-        });
-    };
-
-    const handleTogglePublish = ({ target }) => {
-        setFormPost({
-            ...formPost,
-            published: target.checked
+            return { ...prevState, [e.target.id]: e.target.id === 'published' ? e.target.checked : e.target.value }
         });
     };
 
@@ -122,10 +120,10 @@ const PostForm = () => {
     };
 
     return (
-        <main className="post-form">
+        <div className="post-form">
             <Breadcrumbs currentPage={formActionPage} />
 
-            <div className="l-container">
+            <div className="u-container">
                 <form className="post-form-inner" onSubmit={handleSubmitPost}>
                     <div className="post-header post-form-header">
                         <ul className="post-action-list post-form-action-list">
@@ -146,8 +144,9 @@ const PostForm = () => {
                                     id="published"
                                     name="published"
                                     className="post-form-published-checkbox"
-                                    onChange={handleTogglePublish}
-                                    checked={formPost.published}
+                                    value={formPost.published}
+                                    defaultChecked={post.published}
+                                    onClick={handleUpdateField}
                                 />
                                 <label htmlFor="published" className="post-form-published-label">Publish</label>
                             </div>
@@ -157,7 +156,7 @@ const PostForm = () => {
                                 id="title"
                                 className="post-form-title-textarea" 
                                 placeholder="Title" 
-                                onChange={handleChangeText}
+                                onChange={handleUpdateField}
                                 value={formPost.title} />
                         </div>
                         <div className="post-form-image-wrapper" style={{backgroundImage: `url(${image})`}}>
@@ -177,7 +176,7 @@ const PostForm = () => {
                                 id="body"
                                 placeholder="Content" 
                                 className="post-form-content-textarea"
-                                onChange={handleChangeText}
+                                onChange={handleUpdateField}
                                 value={formPost.body} />
                         </div>
                     </div>
@@ -186,7 +185,7 @@ const PostForm = () => {
                     {handleCommentSection}
                 </div>
             </div>
-        </main>
+        </div>
     );
 }
 

@@ -74,19 +74,15 @@ const Comment = ({ postId, userId, comments }) => {
         :   <button className="comment-button login-to-comment" onClick={handleLogin}>LOGIN TO COMMENT</button>
 
 	return (
-		<section className="l-section l-section-comment">
-            <div className="l-container">
-                <div className="l-section-inner">
-                    <div className="content content-comment">
-                    	<h3 className="comment-header">COMMENT</h3>
-                    	<div className="comment-list">
-                            {handleCommentList()}
-                    	</div>
-                        {handleCommentForm}
-                    </div>
+		<div className="comment">
+            <div className="u-container">
+                <h3 className="comment-header">COMMENT</h3>
+                <div className="comment-list">
+                    {handleCommentList()}
                 </div>
+                {handleCommentForm}
             </div>
-        </section>
+        </div>
   	);
 }
 

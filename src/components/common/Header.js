@@ -7,7 +7,7 @@ import logoBlack from '../../assets/images/logo-black.png';
 const Header = () => {
     return (
         <header className="header">
-        	<div className="l-container">
+        	<div className="u-container">
             	<div className="header-inner">
                     <Link to="/" className="header-logo">
                         <img src={logoBlack} alt="Blog Logo" className="header-logo-image" />

@@ -10,7 +10,6 @@ import Footer from './components/common/Footer';
 
 import LoginRegisterForm from './components/LoginRegisterForm';
 
-
 function App() {
     const { isLoginRegisterForm } = useUtils();
     const handleScrollLockClass = isLoginRegisterForm ? 'u-scroll-lock' : ''

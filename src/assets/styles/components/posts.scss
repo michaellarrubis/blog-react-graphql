@@ -1,7 +1,11 @@
+.posts {
+	padding: 98px 0 150px;
+}
+
 .posts-header {
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	align-items: baseline;
 }
 
 .posts-title {
@@ -24,18 +28,28 @@
 	display: flex;
 	flex-wrap: wrap;
     align-items: center;
-    margin: 0 -25px 0px -25px;
+    margin: 0 -25px;
+
+    @media (max-width: 768px) {
+    	margin: 0;
+    }
 }
 
 .posts-item {
     margin: 0 25px 50px;
 	width: calc((100%/3) - 50px);
     border: 1px solid $color-primary-black;
+    height: 430px;
 
     &:hover {
     	.posts-image {
 			transform: scale(1.1);
 		}
+    }
+
+    @media (max-width: 768px) {
+    	width: 100%;
+    	margin: 0 0 25px;
     }
 }
 
@@ -71,7 +85,7 @@
 .posts-text {
 	margin-top: 10px;
 	line-height: 1.6;
-	font-size: 20px;
+	font-size: 19px;
 	font-weight: 500;
 	font-family: $gothic;
 	white-space: pre-line;

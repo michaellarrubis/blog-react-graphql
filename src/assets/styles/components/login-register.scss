@@ -1,4 +1,14 @@
 .login-register {
+	padding-top: 78px;
+	margin-bottom: 154px;
+	position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: $color-white;
+    z-index: 1;
+}
+
+.login-register-inner {
 	width: 460px;
 	margin: 0 auto;
 }
