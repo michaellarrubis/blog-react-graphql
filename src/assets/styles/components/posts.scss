@@ -54,7 +54,8 @@
 }
 
 .posts-link {
-    margin: 40px 30px;
+	padding: 40px 30px;
+	height: 100%;
 }
 
 .posts-image-wrapper {
@@ -98,7 +99,7 @@
 	justify-content: center;
 }
 
-.posts-footer-button {
+.posts-loadmore-button {
 	letter-spacing: .15em;
 	padding: 24px 96px;
 	color: $color-white;

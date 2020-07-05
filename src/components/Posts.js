@@ -12,28 +12,55 @@ const Posts = () => {
     const { posts, _getPosts } = usePost();
 
     const [query, setQuery] = useState({ limit: 6, page: 1 });
-    
+    const [postItems, setPostItems] = useState([]);
+    const [isLoadMore, setIsLoadMore] = useState(false);
+
     useEffect(() => {
         _getPosts(query.limit, query.page);
-
+        return () => {
+            setIsLoadMore(false);
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [query]);
+    }, []);
+
+    useEffect(() => {
+        if (posts?.posts) {
+            handleLoadPosts();
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [posts]);
+
+    const handleLoadPosts = () => {
+        if (postItems.length === 0) {
+            setPostItems(posts.posts);
+        } else {
+            if (isLoadMore) {
+                let tmpPostItems = postItems;
+                posts.posts.map(post => tmpPostItems.push(post));
+
+                setPostItems(tmpPostItems);
+                setQuery({ ...query, page: query.page+= 1 });
+            } else {
+                setPostItems(posts.posts);
+            }
+
+        }
+    };
 
     const handleClickLoadMore = (e) => {
         e.preventDefault();
-        let limit = query.limit * (query.page + 1)
-        setQuery({ ...query, limit });
-        _getPosts(limit, query.page);
+        setIsLoadMore(true);
+
+        _getPosts(query.limit, query.page+=1);
     };
 
     const handlePostItems = () => {
-
         return (
             <div className="posts-content">
                 <div className="posts-body">
                     <ul className="posts-list">
                         {
-                            posts?.posts?.map((post, i) => {
+                            postItems?.map((post, i) => {
                                 return (
                                     <li className="posts-item" key={i}>
                                         <Link to={'/posts/' + post.id} className="posts-link">
@@ -51,8 +78,8 @@ const Posts = () => {
                 </div>
                 <div className="posts-footer">
                     {
-                        posts?.posts?.length !== parseInt(posts.count)
-                            ?   <button className="posts-footer-button" onClick={handleClickLoadMore}>LOAD MORE</button>
+                        postItems?.length !== parseInt(posts.count) && postItems?.length !== 0
+                            ?   <button className="posts-loadmore-button" onClick={handleClickLoadMore}>LOAD MORE</button>
                             :   ''
                     }
                 </div>
