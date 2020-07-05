@@ -1,3 +1,7 @@
+require('dotenv').config();
+
+console.log(process.env.REACT_FB_PROJECT_ID);
+
 // Your web app's Firebase configuration
 var firebaseConfig = {
 	apiKey: "AIzaSyBE6AKgp9cNWEE2vQb4Ox0W2aYTonxgcYc",
