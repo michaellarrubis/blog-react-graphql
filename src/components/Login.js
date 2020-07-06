@@ -42,7 +42,7 @@ const Login = () => {
             case 'password':
                 console.log('Password Changes value: ', value);
                 break;
-          default:
+            default:
                 break;
         };
     };

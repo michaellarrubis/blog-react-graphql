@@ -68,9 +68,6 @@ const Posts = () => {
         _getPosts(query.limit, page);
     };
 
-    console.log('postItems: ', postItems, postItems.length)
-    console.log('posts.posts: ', posts.posts, posts.count)
-
     const handlePostItems = () => {
         return (
             <div className="posts-content">

@@ -29,6 +29,7 @@ const PostForm = () => {
     const [isUploading, setIsUploading] = useState(false);
     const [isBtnClicked, setIsBtnClicked] = useState(false);
     const [formPost, setFormPost] = useState({ title: '', published: false, body: '', userId: null });
+    const [isTitleEmpty, setIsTitleEmpty] = useState(false);
 
     const location = useLocation();
     const postId = useParams().id;
@@ -50,6 +51,11 @@ const PostForm = () => {
         });
 
         if (isBtnClicked && createdPost?.id) {
+            setFormPost({
+                ...formPost,
+                published: false
+            });
+
             history.push(`/posts/${createdPost.id}`);
         }
 
@@ -57,6 +63,7 @@ const PostForm = () => {
     }, [createdPost, token]);
 
     useEffect(() => {
+        scrollTop();
         setIsBtnClicked(false);
         
         if (isFormEdit) {
@@ -73,6 +80,7 @@ const PostForm = () => {
         if (isBtnClicked && updatedPost?.id) {
             history.push(`/posts/${updatedPost.id}`);
         }
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [updatedPost, post]);
 
@@ -82,6 +90,10 @@ const PostForm = () => {
                 userId={token?.user?.id} 
                 comments={post.comments} />
         :   '';
+
+    const handleShowErrorTite = isTitleEmpty
+        ? <p className="post-form-title-error">Title must not be empty.</p>
+        : '';
 
     const handleUploadStart = () => {
         setIsUploading(true);
@@ -101,9 +113,23 @@ const PostForm = () => {
 
     const handleUpdateField = (e) => {
         e.persist();
+        const { id, value } = e.target;
+
         setFormPost(prevState => {
             return { ...prevState, [e.target.id]: e.target.id === 'published' ? e.target.checked : e.target.value }
         });
+
+        switch (id) {
+            case 'title':
+                if (value) {
+                    setIsTitleEmpty(false);
+                } else {
+                    setIsTitleEmpty(true);
+                }
+                break;
+            default:
+                break;
+        };
     };
 
     const handleSubmitPost = (e) => {
@@ -112,10 +138,16 @@ const PostForm = () => {
 
         const { title, published, body, userId } = formPost;
 
-        if (isFormEdit) {
-            _updatePost(post.id, title, published, body, image);
-        } else { 
-            _createPost(title, published, body, image, userId);
+        if (title && !isTitleEmpty) {
+            setIsTitleEmpty(false);
+
+            if (isFormEdit) {
+                _updatePost(post.id, title, published, body, image);
+            } else { 
+                _createPost(title, published, body, image, userId);
+            }
+        } else {
+            setIsTitleEmpty(true);
         }
     };
 
@@ -137,21 +169,21 @@ const PostForm = () => {
                     </div>
                     <div className="post-body">
                         <div className="post-form-body-top">
-                            <time dateTime="2019.06.19" className="post-posted">{postDate()}</time>
+                            <time dateTime={postDate()} className="post-posted">{postDate()}</time>
                             <div className="post-form-published">
                                 <input
                                     type="checkbox"
                                     id="published"
                                     name="published"
                                     className="post-form-published-checkbox"
-                                    value={formPost.published}
-                                    defaultChecked={post.published}
-                                    onClick={handleUpdateField}
+                                    value={isFormEdit ? post.published : false}
+                                    defaultChecked={isFormEdit ? post.published : false}
+                                    onChange={handleUpdateField}
                                 />
                                 <label htmlFor="published" className="post-form-published-label">Publish</label>
                             </div>
                         </div>
-                        <div className="post-form-title">
+                        <div className={isTitleEmpty ? 'post-form-title error' : 'post-form-title'}>
                             <textarea
                                 id="title"
                                 className="post-form-title-textarea" 
@@ -159,6 +191,8 @@ const PostForm = () => {
                                 onChange={handleUpdateField}
                                 value={formPost.title} />
                         </div>
+                        {handleShowErrorTite}
+
                         <div className="post-form-image-wrapper" style={{backgroundImage: `url(${image})`}}>
                             <label htmlFor="image-upload" className="post-form-image-label">{ isUploading ? 'UPLOADING...' : 'UPLOAD IMAGE' }</label>
                             <FileUploader

@@ -2,8 +2,6 @@
 	margin-bottom: 160px;
 }
 
-.post-form-inner{}
-
 .post-form-body-top {
 	display: flex;
 	align-items: center;
@@ -16,6 +14,15 @@
 	height: 150px;
 	margin-top: 20px;
 	padding: 20px;
+}
+
+.post-form-title.error {
+	border: 2px solid red;
+}
+
+.post-form-title-error {
+	color: red;
+	margin-top: 12px;
 }
 
 .post-form-published {
