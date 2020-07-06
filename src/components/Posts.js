@@ -5,6 +5,7 @@ import { useAuth } from '../hooks/useAuth.js';
 import { usePost } from '../hooks/usePost.js';
 import { postDate, titleExcerpt } from '../utils/helpers.js';
 
+import PostsLoader from './skeleton-loader/PostsLoader';
 import DummyImage from '../assets/images/slider.png';
 
 const Posts = () => {
@@ -14,6 +15,7 @@ const Posts = () => {
     const [query, setQuery] = useState({ limit: 6, page: 1 });
     const [postItems, setPostItems] = useState([]);
     const [isLoadMore, setIsLoadMore] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         _getPosts(query.limit, query.page);
@@ -26,6 +28,10 @@ const Posts = () => {
     useEffect(() => {
         if (posts?.posts) {
             handleLoadPosts();
+
+            setTimeout(() => {
+                setIsLoading(false)
+            }, 500)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [posts]);
@@ -50,6 +56,7 @@ const Posts = () => {
     const handleClickLoadMore = (e) => {
         e.preventDefault();
         setIsLoadMore(true);
+        setIsLoading(true)
 
         _getPosts(query.limit, query.page+=1);
     };
@@ -58,23 +65,27 @@ const Posts = () => {
         return (
             <div className="posts-content">
                 <div className="posts-body">
-                    <ul className="posts-list">
-                        {
-                            postItems?.map((post, i) => {
-                                return (
-                                    <li className="posts-item" key={i}>
-                                        <Link to={'/posts/' + post.id} className="posts-link">
-                                            <div className="posts-image-wrapper">
-                                                <div className="posts-image" style={{backgroundImage: `url(${post.imageUrl ? post.imageUrl : DummyImage })`}}/>
-                                            </div>
-                                            <time dateTime={postDate(post.createdAt)} className="posts-created">{postDate(post.createdAt)}</time>
-                                            <p className="posts-text">{titleExcerpt(post.title)}</p>
-                                        </Link>
-                                    </li>
-                                )
-                            })
-                        }
-                    </ul>
+                    {
+                        isLoading
+                        ?   <PostsLoader />
+                        :   <ul className="posts-list">
+                                {
+                                    postItems?.map((post, i) => {
+                                        return (
+                                            <li className="posts-item" key={i}>
+                                                <Link to={'/posts/' + post.id} className="posts-link">
+                                                    <div className="posts-image-wrapper">
+                                                        <div className="posts-image" style={{backgroundImage: `url(${post.imageUrl ? post.imageUrl : DummyImage })`}}/>
+                                                    </div>
+                                                    <time dateTime={postDate(post.createdAt)} className="posts-created">{postDate(post.createdAt)}</time>
+                                                    <p className="posts-text">{titleExcerpt(post.title)}</p>
+                                                </Link>
+                                            </li>
+                                        )
+                                    })
+                                }
+                            </ul>
+                    }
                 </div>
                 <div className="posts-footer">
                     {
