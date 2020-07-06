@@ -14,6 +14,7 @@ const Posts = () => {
 
     const [query, setQuery] = useState({ limit: 6, page: 1 });
     const [postItems, setPostItems] = useState([]);
+
     const [isLoadMore, setIsLoadMore] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -28,10 +29,11 @@ const Posts = () => {
     useEffect(() => {
         if (posts?.posts) {
             handleLoadPosts();
+            setIsLoadMore(false);
 
             setTimeout(() => {
                 setIsLoading(false)
-            }, 500)
+            }, 300)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [posts]);
@@ -56,7 +58,6 @@ const Posts = () => {
     const handleClickLoadMore = (e) => {
         e.preventDefault();
         setIsLoadMore(true);
-        setIsLoading(true)
 
         _getPosts(query.limit, query.page+=1);
     };
@@ -83,6 +84,11 @@ const Posts = () => {
                                             </li>
                                         )
                                     })
+                                }
+                                {
+                                    isLoadMore
+                                    ?   <PostsLoader />
+                                    :   ''
                                 }
                             </ul>
                     }
