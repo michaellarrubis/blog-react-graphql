@@ -59,8 +59,17 @@ const Posts = () => {
         e.preventDefault();
         setIsLoadMore(true);
 
-        _getPosts(query.limit, query.page+=1);
+        let page = query.page;
+        if (query.page === 1) {
+            page = query.page + 1;
+            setQuery({ ...query, page: query.page+= 1 });
+        }
+
+        _getPosts(query.limit, page);
     };
+
+    console.log('postItems: ', postItems, postItems.length)
+    console.log('posts.posts: ', posts.posts, posts.count)
 
     const handlePostItems = () => {
         return (
