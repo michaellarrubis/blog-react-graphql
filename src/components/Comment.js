@@ -12,13 +12,16 @@ const Comment = ({ postId, userId, comments }) => {
     const [commentList, setCommentList] = useState([]);
 
     useEffect(() => {
-        setCommentList(comments);
+        if (comments?.length > 0) {
+            setCommentList(comments);
+        }
+
     }, [comments]);
 
     useEffect(() => {
-        if(createdComment) {
+        if(createdComment?.id) {
             setCommentText('');
-            setCommentList([ ...commentList, createdComment ]);
+            setCommentList([createdComment].concat(commentList));
         }
         
         // eslint-disable-next-line react-hooks/exhaustive-deps

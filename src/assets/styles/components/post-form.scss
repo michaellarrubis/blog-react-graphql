@@ -17,11 +17,11 @@
 }
 
 .post-form-title.error {
-	border: 2px solid red;
+	border: 2px solid $color-red;
 }
 
 .post-form-title-error {
-	color: red;
+	color: $color-red;
 	margin-top: 12px;
 }
 
