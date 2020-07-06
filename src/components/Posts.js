@@ -85,12 +85,12 @@ const Posts = () => {
                                         )
                                     })
                                 }
-                                {
-                                    isLoadMore
-                                    ?   <PostsLoader />
-                                    :   ''
-                                }
                             </ul>
+                    }
+                    {
+                        isLoadMore
+                        ?   <PostsLoader />
+                        :   ''
                     }
                 </div>
                 <div className="posts-footer">
