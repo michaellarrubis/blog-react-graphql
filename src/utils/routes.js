@@ -4,7 +4,8 @@ export const routes = {
     register            : '/register',
     posts               : '/posts/:id',
     postCreate          : '/post/create',
-    postEdit            : '/post/:id/edit'
+    postEdit            : '/post/:id/edit',
+    pageNotFound        : '/page-not-found'
 }
 
 export const route = (r, data) => {

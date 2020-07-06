@@ -3,7 +3,7 @@ import { createPost, getPost, updatePost, getPosts } from './../redux/modules/po
 
 export const usePost = () => {
     const dispatch = useDispatch();
-    const { createdPost, post, updatedPost, posts } = useSelector(state => state.post);
+    const { createdPost, post, updatedPost, posts, error } = useSelector(state => state.post);
 
     const _createPost = (title, published, body, imageUrl, userId) => {
         return dispatch(createPost({
@@ -44,6 +44,7 @@ export const usePost = () => {
         createdPost,
         updatedPost,
         post,
-        posts
+        posts,
+        error
     };
 }

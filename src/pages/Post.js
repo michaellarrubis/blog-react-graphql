@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 
 import Comment from '../components/Comment'
 import Breadcrumbs from '../components/common/Breadcrumbs'
@@ -12,6 +12,7 @@ import { postDate, scrollTop } from '../utils/helpers.js';
 
 const Post = () => {
     const postId = useParams().id;
+    const history = useHistory();
 
     const { post, _getPost } = usePost();
     const { token } = useAuth();
@@ -21,7 +22,6 @@ const Post = () => {
 
     useEffect(() => {
         scrollTop();
-        
         _getPost(postId);
 
         if (token && Object.keys(token).length > 0) {
@@ -45,11 +45,13 @@ const Post = () => {
                 id: token?.user?.id,
                 isAuth: post?.user?.id === token?.user?.id ? true : false
             });
+
+        } else {
+            history.push('/page-not-found');
         }
         
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [post]);
-
 
     const handleDisplayEditPost = user.isAuth
         ?   <Link to={'/post/' + post.id + '/edit'} className="post-action-link"> Edit Post </Link>

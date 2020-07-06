@@ -13,7 +13,7 @@ const Comment = ({ postId, userId, comments }) => {
 
     useEffect(() => {
         if (comments?.length > 0) {
-            setCommentList(comments);
+            setCommentList(comments.reverse());
         }
 
     }, [comments]);

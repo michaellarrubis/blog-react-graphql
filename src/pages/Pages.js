@@ -15,6 +15,7 @@ const Pages = () => (
         <Route exact path={routes.postCreate} component={PostForm}/>
         <Route exact path={routes.postEdit} component={PostForm}/>
         <Route exact path="*" component={NotFound}/>
+        <Route exact path={routes.pageNotFound} component={NotFound}/>
     </Switch>
 );
 

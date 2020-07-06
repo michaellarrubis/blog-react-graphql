@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { useAuth } from '../hooks/useAuth.js';
 import { useUtils } from '../hooks/useUtils.js';
 
 const Login = () => {
-    const { _authLogin, token } = useAuth();
+    const { _authLogin, token, error } = useAuth();
     const { _loginRegisterForm, _loginForm } = useUtils();
-
-    const { error } = useSelector(state => state.auth);
 
     const [form, setForm] = useState({ email: '', password: ''});
     const [showError, setShowError] = useState(false);
@@ -28,23 +25,11 @@ const Login = () => {
 
     const handleChange = e => {
         e.persist();
-        const { id, value } = e.target;
         setShowError(false);
 
         setForm(prevState => {
             return { ...prevState, [e.target.id]: e.target.value.trim() }
         });
-
-        switch (id) {
-            case 'email':
-                console.log('Email Changes value: ', value);
-                break;
-            case 'password':
-                console.log('Password Changes value: ', value);
-                break;
-            default:
-                break;
-        };
     };
 
     const handleLoginFormDisplay = (e) => {
