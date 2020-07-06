@@ -41,8 +41,8 @@ export function* authLogout(action) {
   try {
     let response = yield call(authLogoutReq, action.payload || true)
     yield put({ type: `${AUTH_LOGOUT}_SUCCESS`, payload: response })
-  } catch(e) {
-    yield put({ type: `${AUTH_LOGOUT}_FAIL`, payload: e.response })
+  } catch(error) {
+    yield put({ type: `${AUTH_LOGOUT}_FAIL`, payload: error })
   }
 }
 

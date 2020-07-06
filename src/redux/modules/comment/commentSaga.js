@@ -28,8 +28,8 @@ export function* createComment(action) {
   try {
     const { data } = yield createCommentReq(action.payload);
     yield put({ type: `${CREATE_COMMENT}_SUCCESS`, payload: data.createComment })
-  } catch(e) {
-    yield put({ type: `${CREATE_COMMENT}_FAIL`, payload: e.response })
+  } catch(error) {
+    yield put({ type: `${CREATE_COMMENT}_FAIL`, payload: error })
   }
 }
 
@@ -37,8 +37,8 @@ export function* getComments(action) {
   try {
     let response = yield call(getCommentsReq, action.payload)
     yield put({ type: `${GET_COMMENTS}_SUCCESS`, payload: response.data })
-  } catch(e) {
-    yield put({ type: `${GET_COMMENTS}_FAIL`, payload: e.response })
+  } catch(error) {
+    yield put({ type: `${GET_COMMENTS}_FAIL`, payload: error })
   }
 }
 

@@ -18,8 +18,8 @@ export function* loginForm(action) {
   try {
     let response = yield call(loginFormReq, action.payload)
     yield put({ type: `${LOGIN_FORM}_SUCCESS`, payload: response })
-  } catch(e) {
-    yield put({ type: `${LOGIN_FORM}_FAIL`, payload: e.response })
+  } catch(error) {
+    yield put({ type: `${LOGIN_FORM}_FAIL`, payload: error })
   }
 }
 
@@ -27,8 +27,8 @@ export function* loginRegisterForm(action) {
   try {
     let response = yield call(loginRegisterFormReq, action.payload)
     yield put({ type: `${LOGIN_REGISTER_FORM}_SUCCESS`, payload: response })
-  } catch(e) {
-    yield put({ type: `${LOGIN_REGISTER_FORM}_FAIL`, payload: e.response })
+  } catch(error) {
+    yield put({ type: `${LOGIN_REGISTER_FORM}_FAIL`, payload: error })
   }
 }
 

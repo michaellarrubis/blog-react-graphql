@@ -61,8 +61,8 @@ export function* getPosts(action) {
   try {
     const { data } = yield getPostsReq(action.payload)
     yield put({ type: `${GET_POSTS}_SUCCESS`, payload: data.posts })
-  } catch(e) {
-    yield put({ type: `${GET_POSTS}_FAIL`, payload: e.response })
+  } catch(error) {
+    yield put({ type: `${GET_POSTS}_FAIL`, payload: error })
   }
 }
 
@@ -70,8 +70,8 @@ export function* getPost(action) {
   try {
     const { data } = yield getPostReq(action.payload)
     yield put({ type: `${GET_POST}_SUCCESS`, payload: data.post })
-  } catch(e) {
-    yield put({ type: `${GET_POST}_FAIL`, payload: e.response })
+  } catch(error) {
+    yield put({ type: `${GET_POST}_FAIL`, payload: error })
   }
 }
 
@@ -88,8 +88,8 @@ export function* updatePost(action) {
   try {
     const { data } = yield updatePostReq(action.payload)
     yield put({ type: `${UPDATE_POST}_SUCCESS`, payload: data.updatePost })
-  } catch(e) {
-    yield put({ type: `${UPDATE_POST}_FAIL`, payload: e.response })
+  } catch(error) {
+    yield put({ type: `${UPDATE_POST}_FAIL`, payload: error })
   }
 }
 

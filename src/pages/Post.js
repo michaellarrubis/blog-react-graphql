@@ -14,7 +14,7 @@ const Post = () => {
     const postId = useParams().id;
     const history = useHistory();
 
-    const { post, _getPost } = usePost();
+    const { post, _getPost, error } = usePost();
     const { token } = useAuth();
 
     const [user, setUser] = useState({ id: null, isAuth: false });
@@ -46,12 +46,14 @@ const Post = () => {
                 isAuth: post?.user?.id === token?.user?.id ? true : false
             });
 
-        } else {
+        }
+
+        if (error?.message?.includes('not found')) {
             history.push('/page-not-found');
         }
         
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [post]);
+    }, [post, error]);
 
     const handleDisplayEditPost = user.isAuth
         ?   <Link to={'/post/' + post.id + '/edit'} className="post-action-link"> Edit Post </Link>

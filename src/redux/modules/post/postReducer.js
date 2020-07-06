@@ -9,7 +9,7 @@ const INITIAL_STATE = {
   updatedPost: {},
   post: {},
   posts: {},
-  error: null
+  error: {}
 }
 
 // Reducer   (DONT DELETE THIS LINE: USED FOR BATTLECRY DUCK GENERATOR)
@@ -21,7 +21,7 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return {
         ...state,
         updatedPost: action.payload,
-        error: null
+        error: {}
       };
     case `${UPDATE_POST}_FAIL`:
       return {
@@ -35,7 +35,7 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return {
         ...state,
         posts: action.payload,
-        error: null
+        error: {}
       };
     case `${GET_POSTS}_FAIL`:
       return {
@@ -49,7 +49,7 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return {
         ...state,
         post: action.payload,
-        error: null
+        error: {}
       };
     case `${GET_POST}_FAIL`:
       return {
@@ -63,7 +63,7 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return {
         ...state,
         createdPost: action.payload,
-        error: null
+        error: {}
       };
     case `${CREATE_POST}_FAIL`:
       return {
