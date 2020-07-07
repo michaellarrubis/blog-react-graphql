@@ -1,9 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { createPost, getPost, updatePost, getPosts } from './../redux/modules/post/postActions';
+import { createPost, getPost, updatePost, getPosts, getPostsCarousel } from './../redux/modules/post/postActions';
 
 export const usePost = () => {
     const dispatch = useDispatch();
-    const { createdPost, post, updatedPost, posts, error } = useSelector(state => state.post);
+    const { createdPost, post, updatedPost, posts, error, carouselPosts } = useSelector(state => state.post);
 
     const _createPost = (title, published, body, imageUrl, userId) => {
         return dispatch(createPost({
@@ -33,11 +33,16 @@ export const usePost = () => {
         return dispatch(getPosts({ limit, page }));
     };
 
+    const _getPostsCarousel = (limit, page) => {
+        return dispatch(getPostsCarousel({ limit, page }));
+    };
+
     return {
         // actions
         _createPost,
         _getPost,
         _getPosts,
+        _getPostsCarousel,
         _updatePost,
 
         // states
@@ -45,6 +50,7 @@ export const usePost = () => {
         updatedPost,
         post,
         posts,
+        carouselPosts,
         error
     };
 }

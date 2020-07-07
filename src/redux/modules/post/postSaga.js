@@ -1,6 +1,7 @@
 import { put, call, getContext } from 'redux-saga/effects'
 import { queries } from './postQueries'
 // Actions   (DONT DELETE THIS LINE: USED FOR BATTLECRY DUCK GENERATOR)
+import { GET_POSTS_CAROUSEL } from './postTypes';
 import { UPDATE_POST } from './postTypes'
 import { GET_POSTS } from './postTypes'
 import { GET_POST } from './postTypes'
@@ -57,6 +58,15 @@ function* updatePostReq({ id, title, published, body, imageUrl }) {
 
 
 // exportFuntion   (DONT DELETE THIS LINE: USED FOR BATTLECRY DUCK GENERATOR)
+export function* getPostsCarousel(action) {
+  try {
+    const { data } = yield getPostsReq(action.payload)
+    yield put({ type: `${GET_POSTS_CAROUSEL}_SUCCESS`, payload: data.posts })
+  } catch(error) {
+    yield put({ type: `${GET_POSTS_CAROUSEL}_FAIL`, payload: error })
+  }
+}
+
 export function* getPosts(action) {
   try {
     const { data } = yield getPostsReq(action.payload)

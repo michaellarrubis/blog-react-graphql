@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Slider from '../components/Slider';
+import Carousel from '../components/Carousel';
 import Posts from '../components/Posts';
 
 const Home = () => {
   	return (
 	    <div className="top">
-	    	<Slider />
+	    	<Carousel />
 	    	<Posts />
 	    </div>
   	);
