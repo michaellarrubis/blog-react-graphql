@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { useAuth } from '../../hooks/useAuth.js';
 import { useUtils } from '../../hooks/useUtils.js';
 
 const Nav = () => {
+    const history = useHistory();
     const { token, _authLogout } = useAuth();
     const { isLoginRegisterForm, _loginRegisterForm, _loginForm } = useUtils();
 
@@ -19,7 +20,8 @@ const Nav = () => {
     const handleLogout = (e) => {
     	e.preventDefault();
     	setIsLoggedIn(false);
-    	_authLogout();
+        _authLogout();
+        history.push('/');
     }
 
     const handleLogin = (e) => {
