@@ -169,7 +169,7 @@ const PostForm = () => {
                     </div>
                     <div className="post-body">
                         <div className="post-form-body-top">
-                            <time dateTime={postDate()} className="post-posted">{postDate()}</time>
+                            <time dateTime={postDate()} className="post-created">{postDate()}</time>
                             <div className="post-form-published">
                                 <input
                                     type="checkbox"
