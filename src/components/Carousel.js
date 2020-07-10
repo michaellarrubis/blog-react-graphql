@@ -1,20 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
 import { postDate } from '../utils/helpers';
-import { usePost } from '../hooks/usePost.js';
 
-const Carousel = () => {
-    const { carouselPosts, _getPostsCarousel } = usePost();
-
+const Carousel = ({ carouselPosts }) => {
     const marginLeft = ['0', '-100%', '-200%'];
     const [activeIndex, setActiveIndex] = useState(0);
     const [slideData, setSlideData] = useState([]);
-
-    useEffect(() => {
-        _getPostsCarousel(3, 1);
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
     useEffect(() => {
         if (carouselPosts && carouselPosts.posts?.length > 0) {

@@ -3,7 +3,7 @@ import { Link, useParams, useHistory } from 'react-router-dom';
 
 import Comment from '../components/Comment'
 import Breadcrumbs from '../components/common/Breadcrumbs'
-import PostLoader from '../components/skeleton-loader/PostLoader'
+import PostLoader from '../components/loader/PostLoader'
 
 import { usePost } from '../hooks/usePost.js';
 import { useAuth } from '../hooks/useAuth.js';

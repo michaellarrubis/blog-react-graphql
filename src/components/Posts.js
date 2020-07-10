@@ -5,7 +5,7 @@ import { useAuth } from '../hooks/useAuth.js';
 import { usePost } from '../hooks/usePost.js';
 import { postDate, titleExcerpt } from '../utils/helpers.js';
 
-import PostsLoader from './skeleton-loader/PostsLoader';
+import PostsLoader from './loader/PostsLoader';
 import DummyImage from '../assets/images/slider.png';
 
 const Posts = () => {
