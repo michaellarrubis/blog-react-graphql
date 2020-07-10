@@ -18,6 +18,8 @@ const Posts = ({
     useEffect(() => {
         if (token && token.user?.id) {
             setIsAuth(true);
+        } else {
+            setIsAuth(false);
         }
     }, [token]);
 
