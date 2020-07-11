@@ -4,7 +4,11 @@ import TimeAgo from 'timeago-react';
 import { useUtils } from '../hooks/useUtils.js';
 import { useComment } from '../hooks/useComment.js';
 
-const Comment = ({ postId, userId, comments }) => {
+const Comment = ({ 
+    postId, 
+    userId, 
+    comments 
+}) => {
     const { _createComment, createdComment } = useComment();
     const { _loginRegisterForm, _loginForm } = useUtils();
 
