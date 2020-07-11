@@ -11,7 +11,6 @@ const PostsLoader = () => {
 									<time className="posts-created u-loading"></time>
 									<p className="posts-text u-loading"></p>
 									<p className="posts-text u-loading"></p>
-									<p className="posts-text u-loading"></p>
 								</div>
 							</li>
 				})}
