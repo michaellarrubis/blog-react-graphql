@@ -5,7 +5,8 @@ import { AUTH_LOGOUT } from './authTypes';
 
 const INITIAL_STATE = {
   token: {},
-  error: null
+  loginError: null,
+  registerError: null
 }
 
 // Reducer   (DONT DELETE THIS LINE: USED FOR BATTLECRY DUCK GENERATOR)
@@ -14,21 +15,21 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
     case AUTH_LOGIN:
       return {
         ...state,
-        error: null
+        loginError: null
       };
     case `${AUTH_LOGIN}_SUCCESS`:
       localStorage.setItem('token', JSON.stringify(action.payload));
       return {
         ...state,
         token: action.payload,
-        error: null
+        loginError: null
       };
     case `${AUTH_LOGIN}_FAIL`:
       localStorage.removeItem('token');
       return {
         ...state,
         token: {},
-        error: action.payload.graphQLErrors[0]
+        loginError: action.payload.graphQLErrors[0]
       };
 
     case AUTH_REGISTER:
@@ -38,14 +39,14 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return {
         ...state,
         token: action.payload,
-        error: null
+        registerError: null
       };
     case `${AUTH_REGISTER}_FAIL`:
       localStorage.removeItem('token');
       return {
         ...state,
         token: {},
-        error: action.payload.graphQLErrors[0]
+        registerError: action.payload.graphQLErrors[0]
       };
 
     case AUTH_LOGOUT:

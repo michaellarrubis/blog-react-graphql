@@ -5,14 +5,14 @@ import { useAuth } from '../hooks/useAuth.js';
 import { useUtils } from '../hooks/useUtils.js';
 
 const Login = () => {
-    const { _authLogin, token, error } = useAuth();
+    const { _authLogin, token, loginError } = useAuth();
     const { _loginRegisterForm, _loginForm } = useUtils();
 
     const [form, setForm] = useState({ email: '', password: ''});
     const [showError, setShowError] = useState(false);
 
     useEffect(() => {
-        if (error) {
+        if (loginError) {
             setShowError(true);
         }
 
@@ -20,8 +20,11 @@ const Login = () => {
             _loginRegisterForm(false);
         }
 
+        return () => {
+            setShowError(false);
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [error, token]);
+    }, [loginError, token]);
 
     const handleChange = e => {
         e.persist();
@@ -40,7 +43,7 @@ const Login = () => {
 
     let handleErrorDisplay = showError ?
         <div className="login-register-error">
-            <p className="login-register-error-text"> { error.message } </p>
+            <p className="login-register-error-text"> { loginError.message } </p>
         </div>
         : '' ;
 

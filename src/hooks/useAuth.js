@@ -3,7 +3,7 @@ import { authLogin, authRegister, authLogout } from './../redux/modules/auth/aut
 
 export const useAuth = () => {
     const dispatch = useDispatch();
-    const { token, error } = useSelector(state => state.auth);
+    const { token, loginError, registerError } = useSelector(state => state.auth);
 
     const _authLogin = (email, password) => {
         return dispatch(authLogin({
@@ -29,6 +29,7 @@ export const useAuth = () => {
 
         // states
         token,
-        error
+        loginError,
+        registerError
     };
 }

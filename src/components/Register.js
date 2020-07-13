@@ -9,14 +9,14 @@ const Register = () => {
     const { _authRegister, token } = useAuth();
     const { _loginRegisterForm, _loginForm } = useUtils();
 
-    const { error } = useSelector(state => state.auth);
+    const { reigsterError } = useSelector(state => state.auth);
 
     const [form, setForm] = useState({ name: '', email: '', confirmPassword: '', password: ''});
     const [showError, setShowError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
 
     useEffect(() => {
-        if (error) {
+        if (reigsterError) {
             setShowError(true);
         }
 
@@ -24,8 +24,11 @@ const Register = () => {
             _loginRegisterForm(false);
         }
 
+        return () => {
+            setShowError(false);
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [error, token]);
+    }, [reigsterError, token]);
 
     const handleChange = e => {
         e.persist();
@@ -37,12 +40,6 @@ const Register = () => {
         });
 
         switch (id) {
-            case 'email':
-                console.log('Email Changes value: ', value);
-                break;
-            case 'password':
-                console.log('Password Changes value: ', value);
-                break;
             case 'confirmPassword':
                 if (value !== form.password) {
                     setShowError(true);
@@ -62,7 +59,7 @@ const Register = () => {
 
     let handleErrorDisplay = showError ?
         <div className="login-register-error">
-            <p className="login-register-error-text"> { error ? error.message : errorMessage } </p>
+            <p className="login-register-error-text"> { reigsterError ? reigsterError.message : errorMessage } </p>
         </div>
         : '' ;
 
