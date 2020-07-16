@@ -6,8 +6,6 @@ import { GET_POST } from './postTypes';
 import { CREATE_POST } from './postTypes';
 
 const INITIAL_STATE = {
-  createdPost: {},
-  updatedPost: {},
   post: {},
   posts: {},
   carouselPosts: {},
@@ -36,13 +34,13 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
     case `${UPDATE_POST}_SUCCESS`:
       return {
         ...state,
-        updatedPost: action.payload,
+        post: action.payload,
         error: {}
       };
     case `${UPDATE_POST}_FAIL`:
       return {
         ...state,
-        updatedPost: {},
+        post: {},
         error: action.payload
       };
     case GET_POSTS:
@@ -78,13 +76,13 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
     case `${CREATE_POST}_SUCCESS`:
       return {
         ...state,
-        createdPost: action.payload,
+        post: action.payload,
         error: {}
       };
     case `${CREATE_POST}_FAIL`:
       return {
         ...state,
-        createdPost: {},
+        post: {},
         error: action.payload
       };
     default: return state;

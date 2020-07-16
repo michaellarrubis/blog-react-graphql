@@ -3,7 +3,7 @@ import { createPost, getPost, updatePost, getPosts, getPostsCarousel } from './.
 
 export const usePost = () => {
     const dispatch = useDispatch();
-    const { createdPost, post, updatedPost, posts, error, carouselPosts } = useSelector(state => state.post);
+    const { post, updatedPost, posts, error, carouselPosts } = useSelector(state => state.post);
 
     const _createPost = (title, published, body, imageUrl, userId) => {
         return dispatch(createPost({
@@ -46,7 +46,6 @@ export const usePost = () => {
         _updatePost,
 
         // states
-        createdPost,
         updatedPost,
         post,
         posts,

@@ -17,8 +17,6 @@ firebase.initializeApp(firebaseConfig);
 const PostForm = () => {
     const { 
         post, 
-        createdPost, 
-        updatedPost,
         _createPost,
         _getPost,
         _updatePost } = usePost();
@@ -41,31 +39,33 @@ const PostForm = () => {
         scrollTop();
         setIsBtnClicked(false);
 
-        if (isFormEdit) {
-            _getPost(postId);
-        }
-
         setFormPost({
             ...formPost,
             userId: token && token.user?.id ? token.user.id : null
         });
 
-        if (isBtnClicked && createdPost?.id) {
-            setFormPost({
-                ...formPost,
-                published: false
-            });
+        if (isFormEdit) {
+            _getPost(postId);
+        }
 
-            history.push(`/posts/${createdPost.id}`);
+        if (post) {
+            if (isBtnClicked && post?.id) {
+                setFormPost({
+                    ...formPost,
+                    published: false
+                });
+
+                history.push(`/posts/${post.id}`);
+            }
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [createdPost, token]);
+    }, [token]);
 
     useEffect(() => {
         scrollTop();
         setIsBtnClicked(false);
-        
+
         if (isFormEdit) {
             setFormPost({
                 ...formPost,
@@ -77,12 +77,12 @@ const PostForm = () => {
             setImage(post.imageUrl);
         }
 
-        if (isBtnClicked && updatedPost?.id) {
-            history.push(`/posts/${updatedPost.id}`);
+        if (isBtnClicked && post?.id) {
+            history.push(`/posts/${post.id}`);
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [updatedPost, post]);
+    }, [post]);
 
     const handleCommentSection = isFormEdit
         ?   <Comment 

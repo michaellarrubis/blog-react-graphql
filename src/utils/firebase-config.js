@@ -1,13 +1,13 @@
 // Your web app's Firebase configuration
 var firebaseConfig = {
-	apiKey: "AIzaSyBE6AKgp9cNWEE2vQb4Ox0W2aYTonxgcYc",
-    authDomain: "imageuploadblog.firebaseapp.com",
-    databaseURL: "https://imageuploadblog.firebaseio.com",
-    projectId: "imageuploadblog",
-    storageBucket: "imageuploadblog.appspot.com",
-    messagingSenderId: "122085179679",
-    appId: "1:122085179679:web:49a7f9bce4040613cab02a",
-    measurementId: "G-C159RRELZ8"
+	apiKey: process.env.REACT_APP_FB_API_KEY,
+    authDomain: process.env.REACT_APP_FB_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_FB_DB_URL,
+    projectId: process.env.REACT_APP_FB_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FB_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FB_MSG_SENDER_ID,
+    appId: process.env.REACT_APP_FB_APP_ID,
+    measurementId: process.env.REACT_APP_FB_MEASUREMENT_ID
 };
 // Initialize Firebase
 
