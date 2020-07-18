@@ -20,39 +20,21 @@ const POST_FIELDS = gql`
   }
 `;
 
-const CREATE_POST = gql`
-  mutation createPost(
-    $title: String!
+const UPSERT_POST = gql`
+  mutation upsertPost(
+    $id: ID
+    $title: String
     $published: Boolean
     $body: String
     $imageUrl: String
-    $userId: ID!
+    $userId: ID
   ) {
-    createPost(data: {
+    upsertPost(id: $id, data: {
       title: $title
       published: $published
       body: $body
       imageUrl: $imageUrl
       userId: $userId
-    }) {
-      id
-    }
-  }
-`;
-
-const UPDATE_POST = gql`
-  mutation updatePost(
-    $id: ID!
-    $title: String
-    $published: Boolean
-    $body: String
-    $imageUrl: String
-  ) {
-    updatePost(id: $id, data: {
-      title: $title
-      published: $published
-      body: $body
-      imageUrl: $imageUrl
     }) {
       id
     }
@@ -86,8 +68,7 @@ const GET_POSTS = gql`
 `;
 
 export const queries = {
-  CREATE_POST,
   GET_POST,
   GET_POSTS,
-  UPDATE_POST
+  UPSERT_POST
 }

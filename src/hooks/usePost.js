@@ -1,27 +1,18 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { createPost, getPost, updatePost, getPosts, getPostsCarousel } from './../redux/modules/post/postActions';
+import { getPost, upsertPost, getPosts, getPostsCarousel } from './../redux/modules/post/postActions';
 
 export const usePost = () => {
     const dispatch = useDispatch();
-    const { post, updatedPost, posts, error, carouselPosts } = useSelector(state => state.post);
+    const { post, posts, error, carouselPosts } = useSelector(state => state.post);
 
-    const _createPost = (title, published, body, imageUrl, userId) => {
-        return dispatch(createPost({
+    const _upsertPost = (id, title, published, body, imageUrl, userId) => {
+        return dispatch(upsertPost({
+            id,
             title, 
             published, 
             body, 
             imageUrl, 
             userId
-        }));
-    };
-
-    const _updatePost = (id, title, published, body, imageUrl) => {
-        return dispatch(updatePost({
-            id,
-            title, 
-            published, 
-            body, 
-            imageUrl
         }));
     };
 
@@ -39,14 +30,12 @@ export const usePost = () => {
 
     return {
         // actions
-        _createPost,
+        _upsertPost,
         _getPost,
         _getPosts,
         _getPostsCarousel,
-        _updatePost,
 
         // states
-        updatedPost,
         post,
         posts,
         carouselPosts,

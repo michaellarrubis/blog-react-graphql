@@ -2,10 +2,9 @@ import { put, call, getContext } from 'redux-saga/effects'
 import { queries } from './postQueries'
 // Actions   (DONT DELETE THIS LINE: USED FOR BATTLECRY DUCK GENERATOR)
 import { GET_POSTS_CAROUSEL } from './postTypes';
-import { UPDATE_POST } from './postTypes'
-import { GET_POSTS } from './postTypes'
 import { GET_POST } from './postTypes'
-import { CREATE_POST } from './postTypes'
+import { GET_POSTS } from './postTypes'
+import { UPSERT_POST } from './postTypes'
 
 // reqFunction   (DONT DELETE THIS LINE: USED FOR BATTLECRY DUCK GENERATOR)
 function* getPostsReq({ limit, page }) {
@@ -26,24 +25,9 @@ function* getPostReq({ id }) {
   })
 }
 
-function* createPostReq({ title, published, body, imageUrl, userId }) {
+function* upsertPostReq({ id, title, published, body, imageUrl, userId }) {
   const client = yield getContext('client')
-  const mutation = queries.CREATE_POST
-
-  return yield call(client.mutate, { mutation,
-    variables: {
-      title, 
-      published, 
-      body, 
-      imageUrl, 
-      userId
-    }
-  })
-}
-
-function* updatePostReq({ id, title, published, body, imageUrl }) {
-  const client = yield getContext('client')
-  const mutation = queries.UPDATE_POST
+  const mutation = queries.UPSERT_POST
 
   return yield call(client.mutate, { mutation,
     variables: {
@@ -51,7 +35,8 @@ function* updatePostReq({ id, title, published, body, imageUrl }) {
       title, 
       published, 
       body, 
-      imageUrl
+      imageUrl,
+      userId
     }
   })
 }
@@ -85,21 +70,12 @@ export function* getPost(action) {
   }
 }
 
-export function* createPost(action) {
+export function* upsertPost(action) {
   try {
-    const { data } = yield createPostReq(action.payload)
-    yield put({ type: `${CREATE_POST}_SUCCESS`, payload: data.createPost })
+    const { data } = yield upsertPostReq(action.payload)
+    yield put({ type: `${UPSERT_POST}_SUCCESS`, payload: data.upsertPost })
   } catch(error) {
-    yield put({ type: `${CREATE_POST}_FAIL`, payload: error })
-  }
-}
-
-export function* updatePost(action) {
-  try {
-    const { data } = yield updatePostReq(action.payload)
-    yield put({ type: `${UPDATE_POST}_SUCCESS`, payload: data.updatePost })
-  } catch(error) {
-    yield put({ type: `${UPDATE_POST}_FAIL`, payload: error })
+    yield put({ type: `${UPSERT_POST}_FAIL`, payload: error })
   }
 }
 

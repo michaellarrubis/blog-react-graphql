@@ -17,9 +17,8 @@ firebase.initializeApp(firebaseConfig);
 const PostForm = () => {
     const { 
         post, 
-        _createPost,
         _getPost,
-        _updatePost } = usePost();
+        _upsertPost } = usePost();
     const { token } = useAuth();
     const history = useHistory();
 
@@ -61,6 +60,8 @@ const PostForm = () => {
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token]);
+
+    console.log(post)
 
     useEffect(() => {
         scrollTop();
@@ -140,12 +141,9 @@ const PostForm = () => {
 
         if (title && !isTitleEmpty) {
             setIsTitleEmpty(false);
-
-            if (isFormEdit) {
-                _updatePost(post.id, title, published, body, image);
-            } else { 
-                _createPost(title, published, body, image, userId);
-            }
+            
+            const _postId = isFormEdit ? post.id : null
+            _upsertPost(_postId, title, published, body, image, userId);
         } else {
             setIsTitleEmpty(true);
         }

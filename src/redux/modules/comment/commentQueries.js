@@ -19,5 +19,5 @@ const CREATE_COMMENT = gql`
 `;
 
 export const queries = {
-  CREATE_COMMENT,
+  CREATE_COMMENT
 }

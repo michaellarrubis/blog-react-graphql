@@ -1,9 +1,8 @@
 // ImportActionType   (DONT DELETE THIS LINE: USED FOR BATTLECRY DUCK GENERATOR)
 import { GET_POSTS_CAROUSEL } from './postTypes';
-import { UPDATE_POST } from './postTypes';
+import { UPSERT_POST } from './postTypes';
 import { GET_POSTS } from './postTypes';
 import { GET_POST } from './postTypes';
-import { CREATE_POST } from './postTypes';
 
 const INITIAL_STATE = {
   post: {},
@@ -29,15 +28,15 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
         carouselPosts: {},
         error: action.payload
       };
-    case UPDATE_POST:
+    case UPSERT_POST:
       return state;
-    case `${UPDATE_POST}_SUCCESS`:
+    case `${UPSERT_POST}_SUCCESS`:
       return {
         ...state,
         post: action.payload,
         error: {}
       };
-    case `${UPDATE_POST}_FAIL`:
+    case `${UPSERT_POST}_FAIL`:
       return {
         ...state,
         post: {},
@@ -66,20 +65,6 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
         error: {}
       };
     case `${GET_POST}_FAIL`:
-      return {
-        ...state,
-        post: {},
-        error: action.payload
-      };
-    case CREATE_POST:
-      return state;
-    case `${CREATE_POST}_SUCCESS`:
-      return {
-        ...state,
-        post: action.payload,
-        error: {}
-      };
-    case `${CREATE_POST}_FAIL`:
       return {
         ...state,
         post: {},
