@@ -61,8 +61,6 @@ const PostForm = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [token]);
 
-    console.log(post)
-
     useEffect(() => {
         scrollTop();
         setIsBtnClicked(false);
