@@ -6,7 +6,7 @@ import { postDate, titleExcerpt } from '../utils/helpers.js';
 import PostsLoader from './loader/PostsLoader';
 
 const Posts = ({ 
-    token,
+    currentUser,
     postItems,
     isLoadMore,
     isLoading,
@@ -16,12 +16,12 @@ const Posts = ({
     const [isAuth, setIsAuth] = useState(false);
 
     useEffect(() => {
-        if (token && token.user?.id) {
+        if (currentUser && currentUser.user?.id) {
             setIsAuth(true);
         } else {
             setIsAuth(false);
         }
-    }, [token]);
+    }, [currentUser]);
 
     return (
         <div className="posts">

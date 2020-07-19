@@ -4,7 +4,7 @@ import { AUTH_REGISTER } from './authTypes';
 import { AUTH_LOGOUT } from './authTypes';
 
 const INITIAL_STATE = {
-  token: {},
+  currentUser: {},
   loginError: null,
   registerError: null
 }
@@ -18,51 +18,53 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
         loginError: null
       };
     case `${AUTH_LOGIN}_SUCCESS`:
-      localStorage.setItem('token', JSON.stringify(action.payload));
+      localStorage.setItem('currentUser', JSON.stringify(action.payload));
       return {
         ...state,
-        token: action.payload,
+        currentUser: action.payload,
         loginError: null
       };
     case `${AUTH_LOGIN}_FAIL`:
-      localStorage.removeItem('token');
+      localStorage.removeItem('currentUser');
       return {
         ...state,
-        token: {},
+        currentUser: {},
         loginError: action.payload.graphQLErrors[0]
       };
 
     case AUTH_REGISTER:
       return state;
     case `${AUTH_REGISTER}_SUCCESS`:
-      localStorage.setItem('token', JSON.stringify(action.payload));
+      localStorage.setItem('currentUser', JSON.stringify(action.payload));
       return {
         ...state,
-        token: action.payload,
+        currentUser: action.payload,
         registerError: null
       };
     case `${AUTH_REGISTER}_FAIL`:
-      localStorage.removeItem('token');
+      localStorage.removeItem('currentUser');
       return {
         ...state,
-        token: {},
+        currentUser: {},
         registerError: action.payload.graphQLErrors[0]
       };
 
     case AUTH_LOGOUT:
       return state;
     case `${AUTH_LOGOUT}_SUCCESS`:
-      localStorage.removeItem('token');
+      localStorage.removeItem('currentUser');
       return {
         ...state,
-        token: {},
-        error: null
+        currentUser: {},
+        loginError: null,
+        registerError: null
       };
     case `${AUTH_LOGOUT}_FAIL`:
       return {
         ...state,
         message: null,
-        error: action.payload
+        loginError: null,
+        registerError: null
       };
     default: return state;
   }

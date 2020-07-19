@@ -1,26 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { useUtils } from '../hooks/useUtils.js';
 import { useAuth } from '../hooks/useAuth.js';
 
 const Register = () => {
-    const { _authRegister, token } = useAuth();
+    const { _authRegister, currentUser, registerError } = useAuth();
     const { _loginRegisterForm, _loginForm } = useUtils();
-
-    const { reigsterError } = useSelector(state => state.auth);
 
     const [form, setForm] = useState({ name: '', email: '', confirmPassword: '', password: ''});
     const [showError, setShowError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
 
     useEffect(() => {
-        if (reigsterError) {
+        if (registerError) {
             setShowError(true);
         }
 
-        if (token && Object.keys(token).length > 0) {
+        if (currentUser && Object.keys(currentUser).length > 0) {
             _loginRegisterForm(false);
         }
 
@@ -28,7 +25,7 @@ const Register = () => {
             setShowError(false);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [reigsterError, token]);
+    }, [registerError, currentUser]);
 
     const handleChange = e => {
         e.persist();
@@ -59,7 +56,7 @@ const Register = () => {
 
     let handleErrorDisplay = showError ?
         <div className="login-register-error">
-            <p className="login-register-error-text"> { reigsterError ? reigsterError.message : errorMessage } </p>
+            <p className="login-register-error-text"> { registerError ? registerError.message : errorMessage } </p>
         </div>
         : '' ;
 

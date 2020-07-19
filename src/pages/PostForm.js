@@ -19,7 +19,7 @@ const PostForm = () => {
         post, 
         _getPost,
         _upsertPost } = usePost();
-    const { token } = useAuth();
+    const { currentUser } = useAuth();
     const history = useHistory();
 
     const [image, setImage] = useState(null);
@@ -40,7 +40,7 @@ const PostForm = () => {
 
         setFormPost({
             ...formPost,
-            userId: token && token.user?.id ? token.user.id : null
+            userId: currentUser && currentUser.user?.id ? currentUser.user.id : null
         });
 
         if (isFormEdit) {
@@ -59,7 +59,7 @@ const PostForm = () => {
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [token]);
+    }, [currentUser]);
 
     useEffect(() => {
         scrollTop();
@@ -86,7 +86,7 @@ const PostForm = () => {
     const handleCommentSection = isFormEdit
         ?   <Comment 
                 postId={postId} 
-                userId={token?.user?.id} 
+                userId={currentUser?.user?.id} 
                 comments={post.comments} />
         :   '';
 

@@ -15,7 +15,7 @@ const Post = () => {
     const history = useHistory();
 
     const { post, _getPost, error } = usePost();
-    const { token } = useAuth();
+    const { currentUser } = useAuth();
 
     const [user, setUser] = useState({ id: null, isAuth: false });
     const [isLoading, setIsLoading] = useState(true);
@@ -24,15 +24,15 @@ const Post = () => {
         scrollTop();
         _getPost(postId);
 
-        if (token && Object.keys(token).length > 0) {
+        if (currentUser && Object.keys(currentUser).length > 0) {
             setUser({
                 ...user,
-                id: token.user.id
+                id: currentUser.user.id
             });
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [token]);
+    }, [currentUser]);
 
     useEffect(() => {
         if (post && Object.keys(post).length) {
@@ -42,8 +42,8 @@ const Post = () => {
 
             setUser({
                 ...user,
-                id: token?.user?.id,
-                isAuth: post?.user?.id === token?.user?.id ? true : false
+                id: currentUser?.user?.id,
+                isAuth: post?.user?.id === currentUser?.user?.id ? true : false
             });
 
         }

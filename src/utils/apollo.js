@@ -8,8 +8,8 @@ import { createHttpLink } from 'apollo-link-http';
 const GRAPHQL_URI = process.env.REACT_APP_GRAPHQL_URI;
 
 const authLink = setContext((_, { headers }) => {
-    const token = localStorage.getItem('token');
-    const authorizationHeader = token ? `Bearer ${JSON.parse(token).access_token}` : null
+    const currentUser = localStorage.getItem('currentUser');
+    const authorizationHeader = currentUser ? `Bearer ${JSON.parse(currentUser).access_token}` : null
     return {
         headers: {
             ...headers,

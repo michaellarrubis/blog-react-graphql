@@ -9,7 +9,7 @@ import CarouselLoader from '../components/loader/CarouselLoader';
 
 const Home = () => {
 	const { carouselPosts, _getPostsCarousel, posts, _getPosts } = usePost();
-    const { token } = useAuth();
+    const { currentUser } = useAuth();
 
 	const [query, setQuery] = useState({ limit: 6, page: 1 });
 	const [postItems, setPostItems] = useState([]);
@@ -77,7 +77,7 @@ const Home = () => {
 				:	<CarouselLoader />
 			}
 			<Posts 
-				token={token} 
+				currentUser={currentUser} 
 				postItems={postItems}
 				isLoadMore={isLoadMore}
 				isLoading={isLoading}

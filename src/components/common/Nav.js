@@ -6,16 +6,16 @@ import { useUtils } from '../../hooks/useUtils.js';
 
 const Nav = () => {
     const history = useHistory();
-    const { token, _authLogout } = useAuth();
+    const { currentUser, _authLogout } = useAuth();
     const { isLoginRegisterForm, _loginRegisterForm, _loginForm } = useUtils();
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
-    	if (token && Object.keys(token).length > 0) {
+    	if (currentUser && Object.keys(currentUser).length > 0) {
     		setIsLoggedIn(true)
     	}
-    }, [token, isLoginRegisterForm]);
+    }, [currentUser, isLoginRegisterForm]);
 
     const handleLogout = (e) => {
     	e.preventDefault();
