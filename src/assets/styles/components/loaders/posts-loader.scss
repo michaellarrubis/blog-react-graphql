@@ -1,18 +1,18 @@
 .posts-loader {
-    .posts-item {
-        border: 1px solid $color-grey;
-    }
+  .posts-item {
+    border: 1px solid $color-grey;
+  }
 
-    .posts-created {
-        height: 25px;
-        width: 40%;
-    }
+  .posts-created {
+    height: 25px;
+    width: 40%;
+  }
 
-    .posts-text {
-        height: 25px;
-        
-        &:nth-of-type(3) {
-            width: 70%;
-        }
+  .posts-text {
+    height: 25px;
+
+    &:nth-of-type(3) {
+      width: 70%;
     }
+  }
 }

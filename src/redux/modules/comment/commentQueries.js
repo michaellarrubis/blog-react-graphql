@@ -1,16 +1,8 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 const CREATE_COMMENT = gql`
-  mutation createComment(
-    $text: String!
-    $postId: ID!
-    $userId: ID!
-  ) {
-    createComment(data: {
-      text: $text
-      postId: $postId
-      userId: $userId
-    }) {
+  mutation createComment($text: String!, $postId: ID!, $userId: ID!) {
+    createComment(data: { text: $text, postId: $postId, userId: $userId }) {
       id
       text
       createdAt
@@ -19,5 +11,5 @@ const CREATE_COMMENT = gql`
 `;
 
 export const queries = {
-  CREATE_COMMENT
-}
+  CREATE_COMMENT,
+};

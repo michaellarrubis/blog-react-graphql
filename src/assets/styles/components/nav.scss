@@ -1,15 +1,18 @@
-.nav {}
+.nav {
+}
 
-.nav-list {}
+.nav-list {
+}
 
-.nav-item {}
+.nav-item {
+}
 
 .nav-link {
-	text-decoration: none;
-	color: $color-primary-black;
-	font-weight: 700;
-	font-size: 19px;
-	letter-spacing: .07em;
-    padding: 21px 0;
-    display: block;
+  text-decoration: none;
+  color: $color-primary-black;
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: 0.07em;
+  padding: 21px 0;
+  display: block;
 }

@@ -1,61 +1,62 @@
-.post {}
+.post {
+}
 
 .post-header {
-	margin-top: 65px;
+  margin-top: 65px;
 }
 
 .post-action-list {
-	display: flex;
-	justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .post-action-item {
-	&:not(:last-child) {
-		margin-right: 45px;
-	}
+  &:not(:last-child) {
+    margin-right: 45px;
+  }
 }
 
 .post-action-link {
-	color: $color-primary-black;
-	background-color: transparent;
-	text-decoration: underline;
-    outline: 0;
-	font-weight: 600;
-	font-size: 20px;
-	letter-spacing: .1em;
+  color: $color-primary-black;
+  background-color: transparent;
+  text-decoration: underline;
+  outline: 0;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 0.1em;
 }
 
 .post-body {
-	margin-top: 33px;
+  margin-top: 33px;
 }
 
 .post-created {
-	font-size: 20px;
-	letter-spacing: .2em;
+  font-size: 20px;
+  letter-spacing: 0.2em;
 }
 
 .post-title {
-	margin-top: 42px;
-	font-size: 40px;
-	font-family: $gothic;
-	font-weight: 500;
-	letter-spacing: .05em;
+  margin-top: 42px;
+  font-size: 40px;
+  font-family: $gothic;
+  font-weight: 500;
+  letter-spacing: 0.05em;
 }
 
 .post-image {
-	margin-top: 48px;
-	width: 100%;
-	height: 540px;
-	background-color: $color-grey;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
+  margin-top: 48px;
+  width: 100%;
+  height: 540px;
+  background-color: $color-grey;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .post-text {
-	margin-top: 60px;
-	font-size: 18px;
-	letter-spacing: .1em;
-    line-height: 2.2;
-    white-space: pre-line;
+  margin-top: 60px;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  line-height: 2.2;
+  white-space: pre-line;
 }

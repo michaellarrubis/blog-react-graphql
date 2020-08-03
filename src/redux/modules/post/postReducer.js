@@ -1,15 +1,15 @@
 // ImportActionType   (DONT DELETE THIS LINE: USED FOR BATTLECRY DUCK GENERATOR)
-import { GET_POSTS_CAROUSEL } from './postTypes';
-import { UPSERT_POST } from './postTypes';
-import { GET_POSTS } from './postTypes';
-import { GET_POST } from './postTypes';
+import { GET_POSTS_CAROUSEL } from "./postTypes";
+import { UPSERT_POST } from "./postTypes";
+import { GET_POSTS } from "./postTypes";
+import { GET_POST } from "./postTypes";
 
 const INITIAL_STATE = {
   post: {},
   posts: {},
   carouselPosts: {},
-  error: {}
-}
+  error: {},
+};
 
 // Reducer   (DONT DELETE THIS LINE: USED FOR BATTLECRY DUCK GENERATOR)
 export default function reducer(state = INITIAL_STATE, action = {}) {
@@ -20,13 +20,13 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return {
         ...state,
         carouselPosts: action.payload,
-        error: {}
+        error: {},
       };
     case `${GET_POSTS_CAROUSEL}_FAIL`:
       return {
         ...state,
         carouselPosts: {},
-        error: action.payload
+        error: action.payload,
       };
     case UPSERT_POST:
       return state;
@@ -34,13 +34,13 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return {
         ...state,
         post: action.payload,
-        error: {}
+        error: {},
       };
     case `${UPSERT_POST}_FAIL`:
       return {
         ...state,
         post: {},
-        error: action.payload
+        error: action.payload,
       };
     case GET_POSTS:
       return state;
@@ -48,13 +48,13 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return {
         ...state,
         posts: action.payload,
-        error: {}
+        error: {},
       };
     case `${GET_POSTS}_FAIL`:
       return {
         ...state,
         posts: {},
-        error: action.payload
+        error: action.payload,
       };
     case GET_POST:
       return state;
@@ -62,15 +62,15 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return {
         ...state,
         post: action.payload,
-        error: {}
+        error: {},
       };
     case `${GET_POST}_FAIL`:
       return {
         ...state,
         post: {},
-        error: action.payload
+        error: action.payload,
       };
-    default: return state;
+    default:
+      return state;
   }
 }
-

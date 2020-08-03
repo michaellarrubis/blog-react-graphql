@@ -1,55 +1,61 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 
-import { useAuth } from '../../hooks/useAuth.js';
-import { useUtils } from '../../hooks/useUtils.js';
+import { useAuth } from "../../hooks/useAuth.js";
+import { useUtils } from "../../hooks/useUtils.js";
 
 const Nav = () => {
-    const history = useHistory();
-    const { currentUser, _authLogout } = useAuth();
-    const { isLoginRegisterForm, _loginRegisterForm, _loginForm } = useUtils();
+  const history = useHistory();
+  const { currentUser, _authLogout } = useAuth();
+  const { isLoginRegisterForm, _loginRegisterForm, _loginForm } = useUtils();
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    useEffect(() => {
-    	if (currentUser && Object.keys(currentUser).length > 0) {
-    		setIsLoggedIn(true)
-    	}
-    }, [currentUser, isLoginRegisterForm]);
-
-    const handleLogout = (e) => {
-    	e.preventDefault();
-    	setIsLoggedIn(false);
-        _authLogout();
-        history.push('/');
+  useEffect(() => {
+    if (currentUser && Object.keys(currentUser).length > 0) {
+      setIsLoggedIn(true);
     }
+  }, [currentUser, isLoginRegisterForm]);
 
-    const handleLogin = (e) => {
-        e.preventDefault();
-        _loginRegisterForm(true);
-        _loginForm(true);
-    }
+  const handleLogout = (e) => {
+    e.preventDefault();
+    setIsLoggedIn(false);
+    _authLogout();
+    history.push("/");
+  };
 
-    const handleClose = (e) => {
-        e.preventDefault();
-        _loginRegisterForm(false);
-    }
+  const handleLogin = (e) => {
+    e.preventDefault();
+    _loginRegisterForm(true);
+    _loginForm(true);
+  };
 
-    const handleNavLinkDisplay = isLoginRegisterForm
-    	? <Link to="/" onClick={handleClose} className="nav-link"> CLOSE </Link>
-    	: isLoggedIn
-            ? <Link to="/" onClick={handleLogout} className="nav-link"> LOGOUT </Link>
-            : <Link to="/login" onClick={handleLogin} className="nav-link"> LOGIN </Link>
+  const handleClose = (e) => {
+    e.preventDefault();
+    _loginRegisterForm(false);
+  };
 
-  	return (
-	    <nav className="nav">
-	        <ul className="nav-list">
-	            <li className="nav-item">
-	                {handleNavLinkDisplay}
-	            </li>
-	        </ul>
-	    </nav>
-  	);
-}
+  const handleNavLinkDisplay = isLoginRegisterForm ? (
+    <Link to="/" onClick={handleClose} className="nav-link">
+      CLOSE
+    </Link>
+  ) : isLoggedIn ? (
+    <Link to="/" onClick={handleLogout} className="nav-link">
+      LOGOUT
+    </Link>
+  ) : (
+    <Link to="/login" onClick={handleLogin} className="nav-link">
+      LOGIN
+    </Link>
+  );
+
+  return (
+    <nav className="nav">
+      <ul className="nav-list">
+        <li className="nav-item">{handleNavLinkDisplay}</li>
+      </ul>
+    </nav>
+  );
+};
 
 export default Nav;

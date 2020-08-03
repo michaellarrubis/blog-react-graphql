@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 const POST_FIELDS = gql`
   fragment PostFields on Post {
@@ -29,22 +29,23 @@ const UPSERT_POST = gql`
     $imageUrl: String
     $userId: ID
   ) {
-    upsertPost(id: $id, data: {
-      title: $title
-      published: $published
-      body: $body
-      imageUrl: $imageUrl
-      userId: $userId
-    }) {
+    upsertPost(
+      id: $id
+      data: {
+        title: $title
+        published: $published
+        body: $body
+        imageUrl: $imageUrl
+        userId: $userId
+      }
+    ) {
       id
     }
   }
 `;
 
 const GET_POST = gql`
-  query post(
-    $id: ID!
-  ) {
+  query post($id: ID!) {
     post(id: $id) {
       ...PostFields
     }
@@ -53,10 +54,7 @@ const GET_POST = gql`
 `;
 
 const GET_POSTS = gql`
-  query posts(
-    $limit: ID!
-    $page: ID!
-  ) {
+  query posts($limit: ID!, $page: ID!) {
     posts(limit: $limit, page: $page) {
       posts {
         ...PostFields
@@ -70,5 +68,5 @@ const GET_POSTS = gql`
 export const queries = {
   GET_POST,
   GET_POSTS,
-  UPSERT_POST
-}
+  UPSERT_POST,
+};

@@ -1,73 +1,73 @@
 .footer {
-	color: $color-white;
-	background-color: $color-secondary-black;
+  color: $color-white;
+  background-color: $color-secondary-black;
 }
 
 .footer-inner {
-	padding: 78px 0 70px;
+  padding: 78px 0 70px;
 }
 
 .footer-inner-content {
-	position: relative;
+  position: relative;
 }
 
 .footer-back-to-top {
-	position: absolute;
-	background-color: $color-white;
-	height: 70px;
-	width: 70px;
-	right: 0;
+  position: absolute;
+  background-color: $color-white;
+  height: 70px;
+  width: 70px;
+  right: 0;
 
-    @media(max-width: 768px) {
-    	right: 20px;
-    }
+  @media (max-width: 768px) {
+    right: 20px;
+  }
 
-    &:hover {
-    	cursor: pointer
-    }
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .footer-back-to-top-arrow {
-	height: 12px;
-	width: 12px;
-	border-width: 0 0 3px 3px;
-	border-color: $color-primary-black;
-	border-left-style: solid;
-	border-bottom-style: solid;
-	transform: translateX(50%) rotate(135deg);
-	position: absolute;
-	right: 50%;
-	top: 22px;
+  height: 12px;
+  width: 12px;
+  border-width: 0 0 3px 3px;
+  border-color: $color-primary-black;
+  border-left-style: solid;
+  border-bottom-style: solid;
+  transform: translateX(50%) rotate(135deg);
+  position: absolute;
+  right: 50%;
+  top: 22px;
 }
 
 .footer-back-to-top-text {
-	color: $color-primary-black;
-	font-size: 16px;
-	font-weight: 700;
-	letter-spacing: .08em;
-	position: absolute;
-	bottom: 10px;
-	left: 50%;
-	transform: translateX(-50%);
+  color: $color-primary-black;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .footer-description {
-	margin-top: 38px;
-	font-family: $gothic;
+  margin-top: 38px;
+  font-family: $gothic;
 }
 
 .footer-text {
-	margin-top: 9px;
+  margin-top: 9px;
 }
 
 .footer-copyright {
-	background-color: $color-primary-black;
+  background-color: $color-primary-black;
 }
 
 .footer-copyright-text {
-	font-size: 16px;
-	font-weight: 300;
-	text-align: center;
-	padding: 34px 0;
-	letter-spacing: .1em;
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+  padding: 34px 0;
+  letter-spacing: 0.1em;
 }

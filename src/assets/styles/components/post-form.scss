@@ -1,115 +1,109 @@
 .post-form {
-	margin-bottom: 160px;
+  margin-bottom: 160px;
 }
 
 .post-form-body-top {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .post-form-title {
-	border: 1px solid $color-primary-black;
-	width: 100%;
-	height: 150px;
-	margin-top: 20px;
-	padding: 20px;
+  border: 1px solid $color-primary-black;
+  width: 100%;
+  height: 150px;
+  margin-top: 20px;
+  padding: 20px;
 }
 
 .post-form-title.error {
-	border: 2px solid $color-red;
+  border: 2px solid $color-red;
 }
 
 .post-form-title-error {
-	color: $color-red;
-	margin-top: 12px;
+  color: $color-red;
+  margin-top: 12px;
 }
 
 .post-form-published {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .post-form-published-checkbox {
-	outline: 0;
-    height: 18px;
-    width: 18px;
-    border-radius: 0;
+  outline: 0;
+  height: 18px;
+  width: 18px;
+  border-radius: 0;
 }
 
 .post-form-published-label {
-	margin-left: 10px;
-	font-size: 20px;
+  margin-left: 10px;
+  font-size: 20px;
 
-	&:hover {
-		cursor: pointer;
-	}
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .post-form-title-textarea {
-	font-size: 40px;
+  font-size: 40px;
 
-	&::placeholder {
-		font-weight: 600;
-	}
+  &::placeholder {
+    font-weight: 600;
+  }
 }
 
 .post-form-image-wrapper {
-	background-color: $color-grey;
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
-	width: 100%;
-	margin-top: 30px;
-	height: 540px;
-	position: relative;
+  background-color: $color-grey;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  margin-top: 30px;
+  height: 540px;
+  position: relative;
 }
 
 .post-form-image-file {
-	display: none;
+  display: none;
 }
 .post-form-image-label {
-	display: block;
-	position: absolute;
-	bottom: 0;
-	letter-spacing: .11em;
-	padding: 23px 35px;
-	border: 0;
-	color: $color-white;
-    background-color: $color-primary-black;
-    outline: 0;
-	font-weight: 600;
-	font-size: 20px;
-	font-family: $montserrat;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  letter-spacing: 0.11em;
+  padding: 23px 35px;
+  border: 0;
+  color: $color-white;
+  background-color: $color-primary-black;
+  outline: 0;
+  font-weight: 600;
+  font-size: 20px;
+  font-family: $montserrat;
 
-	&:hover {
-		cursor: pointer;
-	}
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .post-form-text-content {
-	border: 1px solid $color-primary-black;
-	width: 100%;
-	height: 395px;
-	margin-top: 36px;
-	padding: 20px 23px;
+  border: 1px solid $color-primary-black;
+  width: 100%;
+  height: 395px;
+  margin-top: 36px;
+  padding: 20px 23px;
 }
 
 .post-form-content-textarea {
-	line-height: 2;
-	font-size: 18px;
+  line-height: 2;
+  font-size: 18px;
 }
 
 .post-form-action-button {
-	border: 0;
+  border: 0;
 
-	&:hover {
-		cursor: pointer;
-	}
+  &:hover {
+    cursor: pointer;
+  }
 }
-
-
-
-
-
-

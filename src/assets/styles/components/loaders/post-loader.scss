@@ -1,26 +1,26 @@
 .post-loader {
-    margin-top: 30px;
-    margin-bottom: 200px;
+  margin-top: 30px;
+  margin-bottom: 200px;
 
-    .post-created {
-        height: 25px;
-        width: 30%
+  .post-created {
+    height: 25px;
+    width: 30%;
+  }
+
+  .post-title {
+    height: 45px;
+
+    &:nth-of-type(3) {
+      margin-top: 12px;
+      width: 50%;
     }
+  }
 
-    .post-title {
-        height: 45px;
-
-        &:nth-of-type(3) {
-            margin-top: 12px;
-            width: 50%;
-        }
+  .post-text {
+    .post-text-loading {
+      height: 30px;
+      display: block;
+      margin-top: 16px;
     }
-
-    .post-text {
-        .post-text-loading {
-            height: 30px;
-            display: block;
-            margin-top: 16px;
-        }
-    }
+  }
 }

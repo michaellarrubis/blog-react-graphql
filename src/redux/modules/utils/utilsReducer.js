@@ -1,12 +1,12 @@
 // ImportActionType   (DONT DELETE THIS LINE: USED FOR BATTLECRY DUCK GENERATOR)
-import { LOGIN_FORM } from './utilsTypes';
-import { LOGIN_REGISTER_FORM } from './utilsTypes';
+import { LOGIN_FORM } from "./utilsTypes";
+import { LOGIN_REGISTER_FORM } from "./utilsTypes";
 
 const INITIAL_STATE = {
   isLoginRegisterForm: false,
   isLoginForm: true,
-  error: null
-}
+  error: null,
+};
 
 // Reducer   (DONT DELETE THIS LINE: USED FOR BATTLECRY DUCK GENERATOR)
 export default function reducer(state = INITIAL_STATE, action = {}) {
@@ -17,13 +17,13 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return {
         ...state,
         isLoginForm: action.payload,
-        error: null
+        error: null,
       };
     case `${LOGIN_FORM}_FAIL`:
       return {
         ...state,
         isLoginForm: true,
-        error: action.payload
+        error: action.payload,
       };
     case LOGIN_REGISTER_FORM:
       return state;
@@ -31,15 +31,15 @@ export default function reducer(state = INITIAL_STATE, action = {}) {
       return {
         ...state,
         isLoginRegisterForm: action.payload,
-        error: null
+        error: null,
       };
     case `${LOGIN_REGISTER_FORM}_FAIL`:
       return {
         ...state,
         isLoginRegisterForm: false,
-        error: action.payload
+        error: action.payload,
       };
-    default: return state;
+    default:
+      return state;
   }
 }
-
