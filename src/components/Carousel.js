@@ -82,10 +82,10 @@ const Carousel = ({ carouselPosts }) => {
                 <div className="carousel-item-inner">
                   <div className="carousel-item-title">{slide.title}</div>
                   <time
-                    dateTime={postDate(slide.created)}
+                    dateTime={postDate(slide.createdAt)}
                     className="carousel-item-created"
                   >
-                    {postDate(slide.created)}
+                    {postDate(slide.createdAt)}
                   </time>
                 </div>
               </div>
