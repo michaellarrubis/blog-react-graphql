@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
+import { ReactTitle } from "react-meta-tags";
 
 import Comment from "../components/Comment";
 import Breadcrumbs from "../components/common/Breadcrumbs";
@@ -11,10 +12,11 @@ import { useAuth } from "../hooks/useAuth.js";
 import { postDate, scrollTop } from "../utils/helpers.js";
 
 const Post = () => {
-  const postId = useParams().id;
+  const params = useParams();
+  const postSlug = params.slug;
   const history = useHistory();
 
-  const { post, _getPost, error } = usePost();
+  const { post, error, _getPostBySlug } = usePost();
   const { currentUser } = useAuth();
 
   const [user, setUser] = useState({ id: null, isAuth: false });
@@ -22,7 +24,7 @@ const Post = () => {
 
   useEffect(() => {
     scrollTop();
-    _getPost(postId);
+    _getPostBySlug(postSlug);
 
     if (currentUser && Object.keys(currentUser).length > 0) {
       setUser({
@@ -64,6 +66,7 @@ const Post = () => {
 
   return (
     <div className="post">
+      <ReactTitle title={post.title + " | Blog"}></ReactTitle>
       {isLoading ? (
         <PostLoader />
       ) : (

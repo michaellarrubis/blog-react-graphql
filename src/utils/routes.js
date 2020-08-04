@@ -2,7 +2,7 @@ export const routes = {
   home: "/",
   login: "/login",
   register: "/register",
-  posts: "/posts/:id",
+  posts: "/posts/:slug",
   postCreate: "/post/create",
   postEdit: "/post/:id/edit",
   pageNotFound: "/page-not-found",

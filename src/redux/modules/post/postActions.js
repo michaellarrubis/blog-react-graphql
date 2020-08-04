@@ -1,10 +1,15 @@
 // ImportActionType   (DONT DELETE THIS LINE: USED FOR BATTLECRY DUCK GENERATOR)
+import { GET_POST_BY_SLUG } from './postTypes';
 import { GET_POSTS_CAROUSEL } from './postTypes';
 import { UPSERT_POST } from './postTypes';
 import { GET_POST } from './postTypes';
 import { GET_POSTS } from './postTypes';
 
 // Action Creators   (DONT DELETE THIS LINE: USED FOR BATTLECRY DUCK GENERATOR)
+export function getPostBySlug(data) {
+  return { type: GET_POST_BY_SLUG , payload: data };
+}
+
 export function getPostsCarousel(data) {
   return { type: GET_POSTS_CAROUSEL , payload: data };
 }

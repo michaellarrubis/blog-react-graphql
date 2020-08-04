@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { ReactTitle } from "react-meta-tags";
 import { Link, useHistory, useLocation, useParams } from "react-router-dom";
 import firebase from "firebase";
 import FileUploader from "react-firebase-file-uploader";
@@ -50,13 +51,13 @@ const PostForm = () => {
     }
 
     if (post) {
-      if (isBtnClicked && post?.id) {
+      if (isBtnClicked && post?.slug) {
         setFormPost({
           ...formPost,
           published: false,
         });
 
-        history.push(`/posts/${post.id}`);
+        history.push(`/posts/${post.slug}`);
       }
     }
 
@@ -78,8 +79,8 @@ const PostForm = () => {
       setImage(post.imageUrl);
     }
 
-    if (isBtnClicked && post?.id) {
-      history.push(`/posts/${post.id}`);
+    if (isBtnClicked && post?.slug) {
+      history.push(`/posts/${post.slug}`);
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -161,6 +162,9 @@ const PostForm = () => {
 
   return (
     <div className="post-form">
+      <ReactTitle
+        title={isFormEdit ? "Edit Post | Blog" : "Create Post | Blog"}
+      />
       <Breadcrumbs currentPage={formActionPage} />
 
       <div className="u-container">

@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import {
   getPost,
+  getPostBySlug,
   upsertPost,
   getPosts,
   getPostsCarousel,
@@ -29,6 +30,10 @@ export const usePost = () => {
     return dispatch(getPost({ id }));
   };
 
+  const _getPostBySlug = (slug) => {
+    return dispatch(getPostBySlug({ slug }));
+  };
+
   const _getPosts = (limit, page) => {
     return dispatch(getPosts({ limit, page }));
   };
@@ -41,6 +46,7 @@ export const usePost = () => {
     // actions
     _upsertPost,
     _getPost,
+    _getPostBySlug,
     _getPosts,
     _getPostsCarousel,
 

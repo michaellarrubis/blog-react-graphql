@@ -45,7 +45,7 @@ const Posts = ({
                 {postItems?.map((post, i) => {
                   return (
                     <li className="posts-item" key={i}>
-                      <Link to={"/posts/" + post.id} className="posts-link">
+                      <Link to={"/posts/" + post.slug} className="posts-link">
                         <div className="posts-image-wrapper">
                           <div
                             className="posts-image"

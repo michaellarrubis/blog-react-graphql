@@ -5,6 +5,7 @@ const POST_FIELDS = gql`
     id
     title
     body
+    slug
     published
     imageUrl
     createdAt
@@ -40,6 +41,7 @@ const UPSERT_POST = gql`
       }
     ) {
       id
+      slug
     }
   }
 `;
@@ -47,6 +49,15 @@ const UPSERT_POST = gql`
 const GET_POST = gql`
   query post($id: ID!) {
     post(id: $id) {
+      ...PostFields
+    }
+  }
+  ${POST_FIELDS}
+`;
+
+const GET_POST_BY_SLUG = gql`
+  query postBySlug($slug: String!) {
+    postBySlug(slug: $slug) {
       ...PostFields
     }
   }
@@ -67,6 +78,7 @@ const GET_POSTS = gql`
 
 export const queries = {
   GET_POST,
+  GET_POST_BY_SLUG,
   GET_POSTS,
   UPSERT_POST,
 };

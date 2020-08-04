@@ -1,4 +1,5 @@
 // ImportActionType   (DONT DELETE THIS LINE: USED FOR BATTLECRY DUCK GENERATOR)
+import { GET_POST_BY_SLUG } from "./postTypes";
 import { GET_POSTS_CAROUSEL } from "./postTypes";
 import { UPSERT_POST } from "./postTypes";
 import { GET_POSTS } from "./postTypes";
@@ -14,6 +15,20 @@ const INITIAL_STATE = {
 // Reducer   (DONT DELETE THIS LINE: USED FOR BATTLECRY DUCK GENERATOR)
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
+    case GET_POST_BY_SLUG:
+      return state;
+    case `${GET_POST_BY_SLUG}_SUCCESS`:
+      return {
+        ...state,
+        post: action.payload,
+        error: {},
+      };
+    case `${GET_POST_BY_SLUG}_FAIL`:
+      return {
+        ...state,
+        post: {},
+        error: action.payload,
+      };
     case GET_POSTS_CAROUSEL:
       return state;
     case `${GET_POSTS_CAROUSEL}_SUCCESS`:

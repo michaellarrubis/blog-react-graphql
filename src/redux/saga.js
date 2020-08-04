@@ -2,6 +2,7 @@ import { all, takeLatest, setContext } from "redux-saga/effects";
 import { client } from "./../utils/apollo";
 
 // actionTypes   (DONT DELETE THIS LINE: USED FOR BATTLECRY DUCK GENERATOR)
+import { GET_POST_BY_SLUG  } from './modules/post/postTypes.js';
 import { GET_POSTS_CAROUSEL } from "./modules/post/postTypes.js";
 import { GET_COMMENTS } from "./modules/comment/commentTypes.js";
 import { CREATE_COMMENT } from "./modules/comment/commentTypes.js";
@@ -15,6 +16,7 @@ import { AUTH_REGISTER } from "./modules/auth/authTypes.js";
 import { AUTH_LOGIN } from "./modules/auth/authTypes.js";
 
 // sagaActions   (DONT DELETE THIS LINE: USED FOR BATTLECRY DUCK GENERATOR)
+import { getPostBySlug  } from './modules/post/postSaga.js';
 import { getPostsCarousel } from "./modules/post/postSaga.js";
 import { getComments } from "./modules/comment/commentSaga.js";
 import { createComment } from "./modules/comment/commentSaga.js";
@@ -30,6 +32,7 @@ import { authLogin } from "./modules/auth/authSaga.js";
 export default function* rootSaga() {
   yield setContext({ client });
   yield all([
+    takeLatest(GET_POST_BY_SLUG, getPostBySlug),
     takeLatest(GET_POSTS_CAROUSEL, getPostsCarousel),
     takeLatest(GET_COMMENTS, getComments),
     takeLatest(CREATE_COMMENT, createComment),

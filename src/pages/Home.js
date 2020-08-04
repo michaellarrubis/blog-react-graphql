@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { ReactTitle } from "react-meta-tags";
 import { useAuth } from "../hooks/useAuth.js";
 import { usePost } from "../hooks/usePost.js";
 
@@ -70,6 +71,7 @@ const Home = () => {
 
   return (
     <div className="top">
+      <ReactTitle title="Blog | Basic Blog SPA" />
       {carouselPosts && carouselPosts.posts?.length > 0 ? (
         <Carousel carouselPosts={carouselPosts} />
       ) : (

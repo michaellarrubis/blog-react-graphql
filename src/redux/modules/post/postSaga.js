@@ -1,12 +1,20 @@
 import { put, call, getContext } from "redux-saga/effects";
 import { queries } from "./postQueries";
 // Actions   (DONT DELETE THIS LINE: USED FOR BATTLECRY DUCK GENERATOR)
+import { GET_POST_BY_SLUG } from "./postTypes";
 import { GET_POSTS_CAROUSEL } from "./postTypes";
 import { GET_POST } from "./postTypes";
 import { GET_POSTS } from "./postTypes";
 import { UPSERT_POST } from "./postTypes";
 
 // reqFunction   (DONT DELETE THIS LINE: USED FOR BATTLECRY DUCK GENERATOR)
+function* getPostBySlugReq({ slug }) {
+  const client = yield getContext("client");
+  const mutation = queries.GET_POST_BY_SLUG;
+
+  return yield call(client.mutate, { mutation, variables: { slug } });
+}
+
 function* getPostsReq({ limit, page }) {
   const client = yield getContext("client");
   const mutation = queries.GET_POSTS;
@@ -39,6 +47,18 @@ function* upsertPostReq({ id, title, published, body, imageUrl, userId }) {
 }
 
 // exportFuntion   (DONT DELETE THIS LINE: USED FOR BATTLECRY DUCK GENERATOR)
+export function* getPostBySlug(action) {
+  try {
+    const { data } = yield getPostBySlugReq(action.payload);
+    yield put({
+      type: `${GET_POST_BY_SLUG}_SUCCESS`,
+      payload: data.postBySlug,
+    });
+  } catch (error) {
+    yield put({ type: `${GET_POST_BY_SLUG}_FAIL`, payload: error });
+  }
+}
+
 export function* getPostsCarousel(action) {
   try {
     const { data } = yield getPostsReq(action.payload);
