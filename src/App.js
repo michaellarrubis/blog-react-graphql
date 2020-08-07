@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import "./assets/styles/style.scss";
 
@@ -11,11 +11,19 @@ import Footer from "./components/common/Footer";
 import LoginRegisterForm from "./components/LoginRegisterForm";
 
 function App() {
-  const { isLoginRegisterForm } = useUtils();
-  const handleScrollLockClass = isLoginRegisterForm ? "u-scroll-lock" : "";
+  const { isScrollLock, isLoginRegisterForm } = useUtils();
+  const [scrollLockClass, setScrollLockClass] = useState("");
+
+  useEffect(() => {
+    if (isScrollLock) {
+      setScrollLockClass("u-scroll-lock");
+    } else {
+      setScrollLockClass("");
+    }
+  }, [isScrollLock]);
 
   return (
-    <div className={`app ${handleScrollLockClass}`}>
+    <div className={`app ${scrollLockClass}`}>
       <BrowserRouter>
         <Header />
         {!isLoginRegisterForm ? <Navigation /> : <LoginRegisterForm />}

@@ -6,7 +6,7 @@ import { useUtils } from "../hooks/useUtils.js";
 
 const Login = () => {
   const { _authLogin, currentUser, loginError } = useAuth();
-  const { _loginRegisterForm, _loginForm } = useUtils();
+  const { _loginForm, _scrollLock, _loginRegisterForm } = useUtils();
 
   const [form, setForm] = useState({ email: "", password: "" });
   const [showError, setShowError] = useState(false);
@@ -17,6 +17,7 @@ const Login = () => {
     }
 
     if (currentUser && Object.keys(currentUser).length > 0) {
+      _scrollLock(false);
       _loginRegisterForm(false);
     }
 

@@ -6,9 +6,9 @@ import utils from "./utils/utilsReducer";
 import auth from "./auth/authReducer";
 
 const reducer = combineReducers({
+  utils,
   comment,
   post,
-  utils,
   auth,
 });
 

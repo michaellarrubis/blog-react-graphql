@@ -1,9 +1,11 @@
 // ImportActionType   (DONT DELETE THIS LINE: USED FOR BATTLECRY DUCK GENERATOR)
+import { SCROLL_LOCK } from "./utilsTypes";
 import { LOGIN_FORM } from "./utilsTypes";
 import { LOGIN_REGISTER_FORM } from "./utilsTypes";
 
 const INITIAL_STATE = {
   isLoginRegisterForm: false,
+  isScrollLock: false,
   isLoginForm: true,
   error: null,
 };
@@ -11,6 +13,20 @@ const INITIAL_STATE = {
 // Reducer   (DONT DELETE THIS LINE: USED FOR BATTLECRY DUCK GENERATOR)
 export default function reducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
+    case SCROLL_LOCK:
+      return state;
+    case `${SCROLL_LOCK}_SUCCESS`:
+      return {
+        ...state,
+        isScrollLock: action.payload,
+        error: null,
+      };
+    case `${SCROLL_LOCK}_FAIL`:
+      return {
+        ...state,
+        isScrollLock: false,
+        error: action.payload,
+      };
     case LOGIN_FORM:
       return state;
     case `${LOGIN_FORM}_SUCCESS`:

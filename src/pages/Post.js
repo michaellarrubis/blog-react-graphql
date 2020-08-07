@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
-import { ReactTitle } from "react-meta-tags";
 
 import Comment from "../components/Comment";
 import Breadcrumbs from "../components/common/Breadcrumbs";
@@ -38,6 +37,8 @@ const Post = () => {
 
   useEffect(() => {
     if (post && Object.keys(post).length) {
+      document.title = post.title + " | Blog";
+
       setTimeout(() => {
         setIsLoading(false);
       }, 500);
@@ -66,14 +67,13 @@ const Post = () => {
 
   return (
     <div className="post">
-      <ReactTitle title={post.title + " | Blog"}></ReactTitle>
       {isLoading ? (
         <PostLoader />
       ) : (
         <div>
           <Breadcrumbs
             currentPage={post.title}
-            currentPageUrl={"/posts/" + post.id}
+            currentPageUrl={"/posts/" + post.slug}
           />
           <div className="u-container">
             <div className="post-header">

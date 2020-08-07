@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Breadcrumbs = (props) => {
+const Breadcrumbs = ({ currentPageUrl, currentPage }) => {
   return (
     <div className="breadcrumbs">
       <div className="u-container">
@@ -13,10 +13,10 @@ const Breadcrumbs = (props) => {
           </li>
           <li className="breadcrumbs-item">
             <Link
-              to={props.currentPageUrl ? props.currentPageUrl : "/"}
+              to={currentPageUrl ? currentPageUrl : "/"}
               className="breadcrumbs-link"
             >
-              {props.currentPage ? props.currentPage : ""}
+              {currentPage ? currentPage : ""}
             </Link>
           </li>
         </ul>

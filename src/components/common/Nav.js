@@ -7,7 +7,12 @@ import { useUtils } from "../../hooks/useUtils.js";
 const Nav = () => {
   const history = useHistory();
   const { currentUser, _authLogout } = useAuth();
-  const { isLoginRegisterForm, _loginRegisterForm, _loginForm } = useUtils();
+  const {
+    isLoginRegisterForm,
+    _scrollLock,
+    _loginRegisterForm,
+    _loginForm,
+  } = useUtils();
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -15,7 +20,7 @@ const Nav = () => {
     if (currentUser && Object.keys(currentUser).length > 0) {
       setIsLoggedIn(true);
     }
-  }, [currentUser, isLoginRegisterForm]);
+  }, [currentUser]);
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -27,11 +32,13 @@ const Nav = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     _loginRegisterForm(true);
+    _scrollLock(true);
     _loginForm(true);
   };
 
   const handleClose = (e) => {
     e.preventDefault();
+    _scrollLock(false);
     _loginRegisterForm(false);
   };
 

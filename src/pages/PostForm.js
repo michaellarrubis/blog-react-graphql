@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { ReactTitle } from "react-meta-tags";
-import { Link, useHistory, useLocation, useParams } from "react-router-dom";
+import { useHistory, useLocation, useParams } from "react-router-dom";
 import firebase from "firebase";
 import FileUploader from "react-firebase-file-uploader";
 
 import { useAuth } from "../hooks/useAuth.js";
 import { usePost } from "../hooks/usePost.js";
+import { useUtils } from "../hooks/useUtils.js";
 
 import { postDate, scrollTop } from "../utils/helpers.js";
 import firebaseConfig from "../utils/firebase-config";
 
 import Breadcrumbs from "../components/common/Breadcrumbs";
 import Comment from "../components/Comment";
+import Modal from "../components/Modal";
 
 firebase.initializeApp(firebaseConfig);
 
 const PostForm = () => {
   const { post, _getPost, _upsertPost } = usePost();
+  const { _scrollLock, isScrollLock } = useUtils();
   const { currentUser } = useAuth();
   const history = useHistory();
 
@@ -30,6 +32,7 @@ const PostForm = () => {
     userId: null,
   });
   const [isTitleEmpty, setIsTitleEmpty] = useState(false);
+  const [isShowModal, setIsShowModal] = useState(false);
 
   const location = useLocation();
   const postId = useParams().id;
@@ -38,6 +41,8 @@ const PostForm = () => {
   const formActionPage = isFormEdit ? post?.title : "Create New Post";
 
   useEffect(() => {
+    document.title = isFormEdit ? "Edit Post | Blog" : "Create Post | Blog";
+
     scrollTop();
     setIsBtnClicked(false);
 
@@ -62,7 +67,7 @@ const PostForm = () => {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentUser]);
+  }, [currentUser, isScrollLock]);
 
   useEffect(() => {
     scrollTop();
@@ -160,10 +165,30 @@ const PostForm = () => {
     }
   };
 
+  const handleCancelPost = (e) => {
+    e.preventDefault();
+    setIsShowModal(true);
+    _scrollLock(true);
+  };
+
+  const handleModalClose = () => {
+    _scrollLock(false);
+    setIsShowModal(false);
+  };
+
+  const handleModalOk = () => {
+    _scrollLock(false);
+    setIsShowModal(false);
+    history.push("/");
+  };
+
   return (
-    <div className="post-form">
-      <ReactTitle
-        title={isFormEdit ? "Edit Post | Blog" : "Create Post | Blog"}
+    <div className="posts-form">
+      <Modal
+        onShow={isShowModal}
+        text="Discard Changes?"
+        onClose={handleModalClose}
+        onOk={handleModalOk}
       />
       <Breadcrumbs currentPage={formActionPage} />
 
@@ -172,14 +197,17 @@ const PostForm = () => {
           <div className="post-header post-form-header">
             <ul className="post-action-list post-form-action-list">
               <li className="post-action-item">
-                <button className="post-action-link post-form-action-button">
+                <button
+                  type="submit"
+                  className="post-action-link post-form-action-button"
+                >
                   Save Post
                 </button>
               </li>
               <li className="post-action-item">
-                <Link to="/" className="post-action-link">
+                <button onClick={handleCancelPost} className="post-action-link">
                   Cancel
-                </Link>
+                </button>
               </li>
             </ul>
           </div>

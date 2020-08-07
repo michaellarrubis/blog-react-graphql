@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { ReactTitle } from "react-meta-tags";
 import { useAuth } from "../hooks/useAuth.js";
 import { usePost } from "../hooks/usePost.js";
 
@@ -19,6 +18,8 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    document.title = "Blog | Basic Blog SPA";
+
     _getPostsCarousel(3, 1);
     _getPosts(query.limit, query.page);
 
@@ -71,7 +72,6 @@ const Home = () => {
 
   return (
     <div className="top">
-      <ReactTitle title="Blog | Basic Blog SPA" />
       {carouselPosts && carouselPosts.posts?.length > 0 ? (
         <Carousel carouselPosts={carouselPosts} />
       ) : (
